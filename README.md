@@ -1,1 +1,1 @@
-# jcp-shop
+/appveyor/build/:jesuscorral/:jcp-shop
