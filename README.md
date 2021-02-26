@@ -1,1 +1,2 @@
-/appveyor/build/:jesuscorral/:jcp-shop
+https://github.com/jesuscorral/jcp-shop/actions/workflows/dotnet.yml/badge.svg
+
