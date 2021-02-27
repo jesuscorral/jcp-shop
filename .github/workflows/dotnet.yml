@@ -18,8 +18,8 @@ jobs:
       with:
         dotnet-version: 5.0.x
     - name: Restore dependencies
-      run: dotnet restore ./Back/Services/Ordering/JCP.Ordering.API
+      run: dotnet restore ./Back
     - name: Build
-      run: dotnet build ./Back/Services/Ordering/JCP.Ordering.API --no-restore
+      run: dotnet build ./Back --no-restore
     - name: Test
-      run: dotnet test ./Back/Services/Ordering/JCP.Ordering.API --no-build --verbosity normal
+      run: dotnet test ./Back --no-build --verbosity normal
