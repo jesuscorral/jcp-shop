@@ -1,4 +1,4 @@
-name: .NET
+name: jcp-shop .NET 5
 
 on:
   push:
