@@ -8,7 +8,9 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionsItems", "SolutionsItems", "{DD1174D7-ADFE-4A75-B722-C1725772815F}"
 	ProjectSection(SolutionItems) = preProject
 		.dockerignore = .dockerignore
+		..\.dockerignore = ..\.dockerignore
 		Dockerfile = Dockerfile
+		..\Dockerfile = ..\Dockerfile
 		..\.github\workflows\dotnet.yml = ..\.github\workflows\dotnet.yml
 	EndProjectSection
 EndProject
