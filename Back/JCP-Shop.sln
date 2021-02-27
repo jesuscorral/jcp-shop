@@ -5,8 +5,6 @@ VisualStudioVersion = 16.0.31019.35
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionsItems", "SolutionsItems", "{DD1174D7-ADFE-4A75-B722-C1725772815F}"
 	ProjectSection(SolutionItems) = preProject
-		.dockerignore = .dockerignore
-		..\Dockerfile = ..\Dockerfile
 		..\.github\workflows\dotnet.yml = ..\.github\workflows\dotnet.yml
 	EndProjectSection
 EndProject
@@ -24,13 +22,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JCP.Ordering.API", "Service
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JCP.Ordering.API.Tests", "Tests\Services\Ordering\JCP.Ordering.API.Tests\JCP.Ordering.API.Tests.csproj", "{2CCBC87F-4888-4B0B-9387-78B7B1502A5D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JCP.Catalog.API", "Services\Catalog\JCP.Catalog.API\JCP.Catalog.API.csproj", "{F25A4275-FC49-4ABF-8295-3A842F95BF0B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JCP.Catalog.API", "Services\Catalog\JCP.Catalog.API\JCP.Catalog.API.csproj", "{F25A4275-FC49-4ABF-8295-3A842F95BF0B}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Catalog", "Catalog", "{22C5C7D2-058F-4AE5-854F-5B63FF7E2F78}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Catalog", "Catalog", "{84A3B5EA-D2E9-4F37-8D98-D1ECD50E1DBA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JCP.Catalog.API.Test", "Tests\Services\Catalog\JCP.Catalog.API.Test\JCP.Catalog.API.Test.csproj", "{CA99A480-BA0F-4D77-97CC-99FC1EFD4117}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JCP.Catalog.API.Test", "Tests\Services\Catalog\JCP.Catalog.API.Test\JCP.Catalog.API.Test.csproj", "{CA99A480-BA0F-4D77-97CC-99FC1EFD4117}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

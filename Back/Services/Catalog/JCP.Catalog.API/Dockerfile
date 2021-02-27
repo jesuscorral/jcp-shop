@@ -1,16 +1,16 @@
-#See https://aka.ms/containerfastmode to understand how Visual Studio uses this Dockerfile to build your images for faster debugging.
 
-FROM mcr.microsoft.com/dotnet/aspnet:5.0-buster-slim AS base
+FROM mcr.microsoft.com/dotnet/sdk:5.0 AS base
 WORKDIR /app
-EXPOSE 80
-EXPOSE 443
+EXPOSE 5000
+ENV ASPNETCORE_URLS=http://*:5000
 
-FROM mcr.microsoft.com/dotnet/sdk:5.0-buster-slim AS build
+# Copy csproj and restore as distinct layers
+FROM mcr.microsoft.com/dotnet/sdk:5.0 AS build
 WORKDIR /src
-COPY ["Services/Catalog/JCP.Catalog.API/JCP.Catalog.API.csproj", "Services/Catalog/JCP.Catalog.API/"]
-RUN dotnet restore "Services/Catalog/JCP.Catalog.API/JCP.Catalog.API.csproj"
+COPY  ["JCP.Catalog.API.csproj", "./Services/Catalog/"]
+RUN dotnet restore "./Services/Catalog/JCP.Catalog.API.csproj"
 COPY . .
-WORKDIR "/src/Services/Catalog/JCP.Catalog.API"
+WORKDIR "/src/."
 RUN dotnet build "JCP.Catalog.API.csproj" -c Release -o /app/build
 
 FROM build AS publish
