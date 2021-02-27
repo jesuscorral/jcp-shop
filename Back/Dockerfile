@@ -1,18 +1,21 @@
-FROM mcr.microsoft.com/dotnet/sdk:5.0 AS build
-WORKDIR /DockerSource
+FROM mcr.microsoft.com/dotnet/sdk:5.0 AS base
+WORKDIR /app
+EXPOSE 5000
+ENV ASPNETCORE_URLS=http://*:5000
 
 # Copy csproj and restore as distinct layers
-COPY *.sln .
-COPY Services/JCP.Ordering.API/*.csproj ./core5-website/
-RUN dotnet restore
+FROM mcr.microsoft.com/dotnet/sdk:5.0 AS build
+WORKDIR /src
+COPY  ["Services/JCP.Ordering.API/JCP.Ordering.API.csproj", "./"]
+RUN dotnet restore "./JCP.Ordering.API.csproj"
+COPY . .
+WORKDIR "/src/."
+RUN dotnet build "JCP.Ordering.API.csproj" -c Release -o /app/build
 
-# Copy everything else and build website
-COPY core5-website/. ./core5-website/
-WORKDIR /DockerSource/core5-website
-RUN dotnet publish -c release -o /DockerOutput/Website --no-restore
+FROM build AS publish
+RUN dotnet publish "JCP.Ordering.API.csproj" -c Release -o /app/publish
 
-# Final stage / image
-FROM mcr.microsoft.com/dotnet/aspnet:5.0
-WORKDIR /DockerOutput/Website
-COPY --from=build /DockerOutput/Website ./
-ENTRYPOINT ["dotnet", "core5-website.dll"]
+FROM base AS final
+WORKDIR /app
+COPY --from=publish /app/publish .
+ENTRYPOINT ["dotnet", "JCP.Ordering.API.dll"]
