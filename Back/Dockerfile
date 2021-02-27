@@ -1,19 +1,18 @@
-# https://hub.docker.com/_/microsoft-dotnet
 FROM mcr.microsoft.com/dotnet/sdk:5.0 AS build
-WORKDIR /source
+WORKDIR /DockerSource
 
-# copy csproj and restore as distinct layers
+# Copy csproj and restore as distinct layers
 COPY *.sln .
-COPY Services/JCP.Ordering.API/JCP.Ordering.API.csproj ./Services/JCP.Ordering.API/
+COPY Services/JCP.Ordering.API/*.csproj ./core5-website/
 RUN dotnet restore
 
-# copy everything else and build app
-COPY Services/JCP.Ordering.API/. ./Services/JCP.Ordering.API/
-WORKDIR /Services/JCP.Ordering.API
-RUN dotnet publish -c release -o /app --no-restore
+# Copy everything else and build website
+COPY core5-website/. ./core5-website/
+WORKDIR /DockerSource/core5-website
+RUN dotnet publish -c release -o /DockerOutput/Website --no-restore
 
-# final stage/image
+# Final stage / image
 FROM mcr.microsoft.com/dotnet/aspnet:5.0
-WORKDIR /app
-COPY --from=build /app ./
-ENTRYPOINT ["dotnet", "jcp-ordering-api.dll"]
+WORKDIR /DockerOutput/Website
+COPY --from=build /DockerOutput/Website ./
+ENTRYPOINT ["dotnet", "core5-website.dll"]
