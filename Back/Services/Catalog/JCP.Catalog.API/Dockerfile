@@ -1,8 +1,8 @@
 
 FROM mcr.microsoft.com/dotnet/sdk:5.0 AS base
 WORKDIR /app
-EXPOSE 5000
-ENV ASPNETCORE_URLS=http://*:5000
+EXPOSE 5021
+ENV ASPNETCORE_URLS=http://*:5021
 
 # Copy csproj and restore as distinct layers
 FROM mcr.microsoft.com/dotnet/sdk:5.0 AS build

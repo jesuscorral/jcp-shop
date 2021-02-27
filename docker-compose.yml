@@ -1,0 +1,18 @@
+﻿version: '3.8'
+
+services:
+
+  jcp.services.catalog:
+    image: jesuscorral/jcp.services.catalog
+    build:
+      context: Back/Services/Catalog/JCP.Catalog.API
+      dockerfile: Dockerfile
+
+  jcp.services.ordering:
+    image: jesuscorral/jcp.services.ordering
+    build:
+      context: Back/Services/Ordering/JCP.Ordering.API
+      dockerfile: Dockerfile
+
+  databases:
+    image: redis
