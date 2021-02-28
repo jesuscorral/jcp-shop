@@ -8,3 +8,4 @@ Docker
 Dockerhub
 Github actions
 Microservices
+MediatR
