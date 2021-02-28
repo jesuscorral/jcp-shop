@@ -1,9 +1,12 @@
+using JCP.Logger;
+using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
+using System.Reflection;
 
 namespace JCP.Catalog.API
 {
@@ -24,6 +27,8 @@ namespace JCP.Catalog.API
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "JCP.Catalog.API", Version = "v1" });
             });
+
+            services.AddMediatR(typeof(LogNotification).GetTypeInfo().Assembly);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -31,6 +31,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Catalog", "Catalog", "{84A3
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JCP.Catalog.API.Test", "Tests\Services\Catalog\JCP.Catalog.API.Test\JCP.Catalog.API.Test.csproj", "{CA99A480-BA0F-4D77-97CC-99FC1EFD4117}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BuildingBlocks", "BuildingBlocks", "{8A27111F-4113-4C6D-B1B9-0D519CA6C435}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JCP.Logger", "BuildingBlocks\JCP.Logger\JCP.Logger\JCP.Logger.csproj", "{963667A7-ADE9-4B70-BF1B-08549A62A0B3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -53,6 +57,10 @@ Global
 		{CA99A480-BA0F-4D77-97CC-99FC1EFD4117}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CA99A480-BA0F-4D77-97CC-99FC1EFD4117}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CA99A480-BA0F-4D77-97CC-99FC1EFD4117}.Release|Any CPU.Build.0 = Release|Any CPU
+		{963667A7-ADE9-4B70-BF1B-08549A62A0B3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{963667A7-ADE9-4B70-BF1B-08549A62A0B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{963667A7-ADE9-4B70-BF1B-08549A62A0B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{963667A7-ADE9-4B70-BF1B-08549A62A0B3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -67,6 +75,7 @@ Global
 		{22C5C7D2-058F-4AE5-854F-5B63FF7E2F78} = {26A5DE56-73CB-409A-8C88-D99722F0D95B}
 		{84A3B5EA-D2E9-4F37-8D98-D1ECD50E1DBA} = {E61D7019-0D53-4C28-B79A-A4B9DFCFD20D}
 		{CA99A480-BA0F-4D77-97CC-99FC1EFD4117} = {84A3B5EA-D2E9-4F37-8D98-D1ECD50E1DBA}
+		{963667A7-ADE9-4B70-BF1B-08549A62A0B3} = {8A27111F-4113-4C6D-B1B9-0D519CA6C435}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {7002BA4D-6AD1-4D80-8549-94CE5A5272F2}
