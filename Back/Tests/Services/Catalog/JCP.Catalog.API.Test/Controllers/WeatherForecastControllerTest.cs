@@ -1,5 +1,5 @@
 ﻿using JCP.Catalog.API.Controllers;
-using Microsoft.Extensions.Logging;
+using MediatR;
 using Moq;
 using Xunit;
 
@@ -7,11 +7,11 @@ namespace JCP.Catalog.API.Test.Controllers
 {
     public class WeatherForecastControllerTest
         {
-            private readonly Mock<ILogger<WeatherForecastController>> _mockLogger;
+            private readonly Mock<IMediator> _mockLogger;
 
             public WeatherForecastControllerTest()
             {
-                _mockLogger = new Mock<ILogger<WeatherForecastController>>();
+                _mockLogger = new Mock<IMediator>();
             }
 
             [Fact]
