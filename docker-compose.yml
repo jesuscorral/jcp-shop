@@ -7,12 +7,16 @@ services:
     build:
       context: Back/Services/Catalog/JCP.Catalog.API
       dockerfile: Dockerfile
+    ports:
+        -  "5021:5021"
 
   jcp.services.ordering:
     image: jesuscorral/jcp.services.ordering
     build:
       context: Back/Services/Ordering/JCP.Ordering.API
       dockerfile: Dockerfile
+    ports:
+        -  "5011:5011"
 
   databases:
     image: redis
