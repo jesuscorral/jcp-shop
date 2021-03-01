@@ -14,7 +14,6 @@ namespace JCP.Logger
         {
             if (_instance == null)
             {
-
             Log.Logger = new LoggerConfiguration()
                                 .MinimumLevel.Debug()
                                 .MinimumLevel.Override("Microsoft", LogEventLevel.Information)
@@ -28,7 +27,6 @@ namespace JCP.Logger
 
             return _instance;
         }
-
 
         public void LogTrace(LogNotification notification)
         {

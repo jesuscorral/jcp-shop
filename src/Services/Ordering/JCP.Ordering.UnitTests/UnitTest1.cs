@@ -7,7 +7,6 @@ namespace JCP.Ordering.UnitTests
         [Fact]
         public void Test1()
         {
-
         }
     }
 }
