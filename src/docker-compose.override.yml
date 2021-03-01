@@ -4,6 +4,7 @@ services:
   catalog-api:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://0.0.0.0:80
       - PORT=80
       - PATH_BASE=/catalog-api
     ports:
@@ -12,6 +13,7 @@ services:
   ordering-api:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://0.0.0.0:80
       - PATH_BASE=/ordering-api
       - PORT=80
     ports:
