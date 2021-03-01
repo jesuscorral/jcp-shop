@@ -9,3 +9,4 @@ Dockerhub
 Github actions
 Microservices
 MediatR
+Docker compose
