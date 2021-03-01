@@ -1,7 +1,7 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net5.0</TargetFramework>
+    <TargetFramework>net5</TargetFramework>
 
     <IsPackable>false</IsPackable>
   </PropertyGroup>
@@ -22,7 +22,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\Services\Catalog\JCP.Catalog.API\JCP.Catalog.API.csproj" />
+    <ProjectReference Include="..\JCP.Catalog.API\JCP.Catalog.API.csproj" />
   </ItemGroup>
 
 </Project>
