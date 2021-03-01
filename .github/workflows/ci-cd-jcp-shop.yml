@@ -5,21 +5,27 @@ on:
     branches: [ main ]
   pull_request:
     branches: [ main ]
+  workflow_dispatch:
 
 jobs:
   build:
 
     runs-on: ubuntu-latest
-
+    env:
+      build_config: Release
+    
     steps:
     - uses: actions/checkout@v2
     - name: Setup .NET
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 5.0.x
+        
     - name: Restore dependencies
-      run: dotnet restore ./Services
+      run: dotnet restore ./src/JCP-Shop.sln
+      
     - name: Build
-      run: dotnet build ./Services --no-restore
+      run: dotnet build ./src/JCP-Shop.sln --configuration $build_config --no-restore
+      
     - name: Test
-      run: dotnet test ./Services --no-build --verbosity normal
+      run: dotnet test ./src/JCP-Shop.sln --configuration $build_config --no-restore
