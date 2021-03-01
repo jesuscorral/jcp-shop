@@ -11,7 +11,9 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
-
+    env:
+      build_config: Release
+    
     steps:
     - uses: actions/checkout@v2
     - name: Setup .NET
@@ -23,7 +25,7 @@ jobs:
       run: dotnet restore ./src/JCP-Shop.sln
       
     - name: Build
-      run: dotnet build ./src/JCP-Shop.sln --configuration Release --no-restore
+      run: dotnet build ./src/JCP-Shop.sln --configuration $build_config --no-restore
       
     - name: Test
-      run: dotnet test ./src/JCP-Shop.sln --configuration Release --no-restore
+      run: dotnet test ./src/JCP-Shop.sln --configuration $build_config --no-restore
