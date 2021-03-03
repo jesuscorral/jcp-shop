@@ -13,3 +13,8 @@ services:
       context: .
       dockerfile: Services/Ordering/JCP.Ordering.API/Dockerfile
 
+  identityserver-api:
+    image: ${DOCKER_REGISTRY-}jcpidentityserver
+    build:
+      context: .
+      dockerfile: Services/Identity/JCP.IdentityServer.API/Dockerfile

@@ -24,15 +24,12 @@ COPY "docker-compose.dcproj" "docker-compose.dcproj"
 RUN dotnet restore "JCP-Shop.sln"
 
 COPY . .
-WORKDIR "/src/Services/Catalog/JCP.Catalog.API"
+WORKDIR "/src/Services/Identity/JCP.IdentityServer.API"
 RUN dotnet publish --no-restore -c Release -o /app
-
-FROM build as unittest
-WORKDIR /src/Services/Catalog/Catalog.UnitTests
 
 FROM build AS publish
 
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app .
-ENTRYPOINT ["dotnet", "JCP.Catalog.API.dll"]
+ENTRYPOINT ["dotnet", "JCP.Identity.API.dll"]

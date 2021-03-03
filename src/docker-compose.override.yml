@@ -10,6 +10,7 @@ services:
     ports:
       - "5101:80"
       - "5111:443"
+
   ordering-api:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
@@ -19,3 +20,10 @@ services:
     ports:
       - "5102:80"
       - "5112:443"
+
+  identityserver-api:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://0.0.0.0:80
+    ports:
+      - "5105:80"

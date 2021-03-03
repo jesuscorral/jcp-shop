@@ -17,6 +17,7 @@ COPY "Services/Catalog/JCP.Catalog.Infrastructure/JCP.Catalog.Infrastructure.csp
 COPY "Services/Catalog/JCP.Catalog.UnitTests/JCP.Catalog.UnitTests.csproj" "Services/Catalog/JCP.Catalog.UnitTests/JCP.Catalog.UnitTests.csproj"
 COPY "Services/Ordering/JCP.Ordering.API/JCP.Ordering.API.csproj" "Services/Ordering/JCP.Ordering.API/JCP.Ordering.API.csproj"
 COPY "Services/Ordering/JCP.Ordering.UnitTests/JCP.Ordering.UnitTests.csproj" "Services/Ordering/JCP.Ordering.UnitTests/JCP.Ordering.UnitTests.csproj"
+COPY "Services/Identity/JCP.IdentityServer.API/JCP.IdentityServer.API.csproj" "Services/Identity/JCP.IdentityServer.API/JCP.IdentityServer.API.csproj"]
 
 COPY "docker-compose.dcproj" "docker-compose.dcproj"
 
