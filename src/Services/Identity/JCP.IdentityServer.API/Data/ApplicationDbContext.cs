@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace JCP.IdentityServer.Data
+namespace JCP.IdentityServer.API.Data
 {
     public class ApplicationDbContext : IdentityDbContext
     {

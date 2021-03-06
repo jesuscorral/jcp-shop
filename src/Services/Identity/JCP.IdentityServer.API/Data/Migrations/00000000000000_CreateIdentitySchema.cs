@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore.Migrations;
 using System;
 
-namespace JCP.IdentityServer.Data.Migrations
+namespace JCP.IdentityServer.API.Data.Migrations
 {
     public partial class CreateIdentitySchema : Migration
     {

@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace JCP.IdentityServer
+namespace JCP.IdentityServer.API
 {
     public class Program
     {
