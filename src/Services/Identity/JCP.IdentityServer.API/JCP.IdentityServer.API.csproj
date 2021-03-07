@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
-    <UserSecretsId>aspnet-JCP.IdentityServer.API-F7F88D7B-92DF-4F24-89A6-601751B793E3</UserSecretsId>
+    <UserSecretsId>aspnet-JCP.IdentityServer.API-29BB850F-BA1E-4D9D-B89D-C14C20991CB3</UserSecretsId>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
     <DockerfileContext>..\..\..</DockerfileContext>
   </PropertyGroup>

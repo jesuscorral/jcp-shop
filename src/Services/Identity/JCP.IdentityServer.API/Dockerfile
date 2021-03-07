@@ -7,16 +7,26 @@ EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/sdk:5.0 AS build
 WORKDIR /src
-COPY ["Services/Identity/JCP.IdentityServer.API/JCP.IdentityServer.API.csproj", "Services/Identity/JCP.IdentityServer.API/"]
-RUN dotnet restore "Services/Identity/JCP.IdentityServer.API/JCP.IdentityServer.API.csproj"
-COPY . .
-WORKDIR "/src/Services/Identity/JCP.IdentityServer.API"
-RUN dotnet build "JCP.IdentityServer.API.csproj" -c Release -o /app/build
+COPY "JCP-Shop.sln" "JCP-Shop.sln"
 
-FROM build AS publish
-RUN dotnet publish "JCP.IdentityServer.API.csproj" -c Release -o /app/publish
+COPY "BuildingBlocks/Logger/JCP.Logger/JCP.Logger.csproj" "BuildingBlocks/Logger/JCP.Logger/JCP.Logger.csproj"
+COPY "Services/Catalog/JCP.Catalog.API/JCP.Catalog.API.csproj" "Services/Catalog/JCP.Catalog.API/JCP.Catalog.API.csproj"
+COPY "Services/Catalog/JCP.Catalog.Domain/JCP.Catalog.Domain.csproj" "Services/Catalog/JCP.Catalog.Domain/JCP.Catalog.Domain.csproj"
+COPY "Services/Catalog/JCP.Catalog.Infrastructure/JCP.Catalog.Infrastructure.csproj" "Services/Catalog/JCP.Catalog.Infrastructure/JCP.Catalog.Infrastructure.csproj"
+COPY "Services/Catalog/JCP.Catalog.UnitTests/JCP.Catalog.UnitTests.csproj" "Services/Catalog/JCP.Catalog.UnitTests/JCP.Catalog.UnitTests.csproj"
+COPY "Services/Ordering/JCP.Ordering.API/JCP.Ordering.API.csproj" "Services/Ordering/JCP.Ordering.API/JCP.Ordering.API.csproj"
+COPY "Services/Ordering/JCP.Ordering.UnitTests/JCP.Ordering.UnitTests.csproj" "Services/Ordering/JCP.Ordering.UnitTests/JCP.Ordering.UnitTests.csproj"
+COPY "Services/Identity/JCP.IdentityServer.API/JCP.IdentityServer.API.csproj" "Services/Identity/JCP.IdentityServer.API/JCP.IdentityServer.API.csproj"]
+
+COPY "docker-compose.dcproj" "docker-compose.dcproj"
+
+RUN dotnet restore "JCP-Shop.sln"
+
+COPY . .
+WORKDIR "/src/Services/Catalog/JCP.IdentityServer.API"
+RUN dotnet publish --no-restore -c Release -o /app
 
 FROM base AS final
 WORKDIR /app
-COPY --from=publish /app/publish .
+COPY --from=publish /app .
 ENTRYPOINT ["dotnet", "JCP.IdentityServer.API.dll"]
