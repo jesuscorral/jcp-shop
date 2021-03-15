@@ -1,5 +1,6 @@
 ﻿using JCP.Logger;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -10,6 +11,7 @@ namespace JCP.Catalog.API.Controllers
 {
     [ApiController]
     [Route("[controller]")]
+    [Authorize]
     public class WeatherForecastController : BaseController
     {
         private static readonly string[] Summaries = new[]
