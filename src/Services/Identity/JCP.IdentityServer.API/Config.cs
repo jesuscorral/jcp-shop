@@ -1,4 +1,5 @@
 ﻿using IdentityModel;
+using IdentityServer4;
 using IdentityServer4.Models;
 using IdentityServer4.Test;
 using System.Collections.Generic;
@@ -63,6 +64,25 @@ namespace JCP.IdentityServer.API
                             new Secret("secret".Sha256())
                         },
                         AllowedScopes = { "OrderingAPI", "CatalogAPI" }
+                   },
+                   new Client
+                   {
+                        ClientId = "oidcClient",
+                        ClientName = "Example Client Application",
+                        ClientSecrets = new List<Secret> {new Secret("SuperSecretPassword".Sha256())}, // change me!
+    
+                        AllowedGrantTypes = GrantTypes.Code,
+                        RedirectUris = new List<string> {"https://localhost:5002/signin-oidc"},
+                        AllowedScopes = new List<string>
+                        {
+                            IdentityServerConstants.StandardScopes.OpenId,
+                            IdentityServerConstants.StandardScopes.Profile,
+                            IdentityServerConstants.StandardScopes.Email,
+                            "role",
+                            "CatalogAPI.read"
+                        },
+                    RequirePkce = true,
+                    AllowPlainTextPkce = false
                    }
             };
         }
