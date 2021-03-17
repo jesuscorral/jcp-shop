@@ -1,10 +1,18 @@
 version: '3.4'
 
 services:
+  identityserver-api:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://0.0.0.0:80
+    ports:
+      - "5105:80"
+
   catalog-api:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_URLS=http://0.0.0.0:80
+      - identityUrl=http://identity-api
       - PORT=80
       - PATH_BASE=/catalog-api
     ports:
@@ -15,15 +23,11 @@ services:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_URLS=http://0.0.0.0:80
+      - identityUrl=http://identity-api
       - PATH_BASE=/ordering-api
       - PORT=80
     ports:
       - "5102:80"
       - "5112:443"
 
-  identityserver-api:
-    environment:
-      - ASPNETCORE_ENVIRONMENT=Development
-      - ASPNETCORE_URLS=http://0.0.0.0:80
-    ports:
-      - "5105:80"
+

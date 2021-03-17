@@ -1,20 +1,25 @@
 version: '3.4'
 
 services:
+  identityserver-api:
+    image: ${DOCKER_REGISTRY-}jcpidentityserver
+    build:
+      context: .
+      dockerfile: Services/Identity/JCP.IdentityServer.API/Dockerfile
+
   catalog-api:
     image: ${DOCKER_REGISTRY-}jcpcatalogapi
     build:
       context: .
       dockerfile: Services/Catalog/JCP.Catalog.API/Dockerfile
+    depends_on:
+        - identityserver-api
 
   ordering-api:
     image: ${DOCKER_REGISTRY-}jcporderingapi
     build:
       context: .
       dockerfile: Services/Ordering/JCP.Ordering.API/Dockerfile
+    depends_on:
+        - identityserver-api
 
-  identityserver-api:
-    image: ${DOCKER_REGISTRY-}jcpidentityserver
-    build:
-      context: .
-      dockerfile: Services/Identity/JCP.IdentityServer.API/Dockerfile
