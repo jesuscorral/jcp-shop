@@ -3,7 +3,6 @@ using JCP.IdentityServer.API.Seed;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using System.Reflection;
 
 namespace JCP.IdentityServer.API
 {
