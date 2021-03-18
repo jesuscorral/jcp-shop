@@ -1,13 +1,9 @@
-using System.Linq;
-using System.Reflection;
-using IdentityServer4.EntityFramework.DbContexts;
-using IdentityServer4.EntityFramework.Mappers;
+using JCP.IdentityServer.API.Helpers;
+using JCP.IdentityServer.API.Seed;
 using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using System.Reflection;
 
 namespace JCP.IdentityServer.API
 {
@@ -27,43 +23,18 @@ namespace JCP.IdentityServer.API
             const string connectionString = @"Data Source=.;database=JCP.IdentityServer.API;trusted_connection=yes;";
             var migrationsAssembly = typeof(Startup).GetTypeInfo().Assembly.GetName().Name;
 
-            services.AddDbContext<JCPIdentityDbContext>(builder =>
-                builder.UseSqlServer(connectionString, sqlOptions => sqlOptions.MigrationsAssembly(migrationsAssembly)));
-            services.AddIdentity<IdentityUser, IdentityRole>()
-                .AddEntityFrameworkStores<JCPIdentityDbContext>();
-
-
-            //services.AddIdentityServer()
-            //        .AddInMemoryClients(Config.GetClients())
-            //        .AddInMemoryIdentityResources(Config.IdentityResources)
-            //        .AddInMemoryApiResources(Config.GetApiResources())
-            //        .AddInMemoryApiScopes(Config.ApiScopes)
-            //        .AddTestUsers(Config.TestUsers)
-            //        .AddDeveloperSigningCredential();
-
-            // TODO - Move to extension method
-            IIdentityServerBuilder ids = services.AddIdentityServer()
-               .AddDeveloperSigningCredential();
-
-            // EF client, scope, and persisted grant stores
-            ids.AddOperationalStore(options =>
-                    options.ConfigureDbContext = builder =>
-                        builder.UseSqlServer(connectionString, sqlOptions => sqlOptions.MigrationsAssembly(migrationsAssembly)))
-                .AddConfigurationStore(options =>
-                    options.ConfigureDbContext = builder =>
-                        builder.UseSqlServer(connectionString, sqlOptions => sqlOptions.MigrationsAssembly(migrationsAssembly)));
-
-            // ASP.NET Identity integration
-            ids.AddAspNetIdentity<IdentityUser>();
-
-            // Add identity server UI
-            services.AddControllersWithViews();
-
+            // TODO - Get connectionString from appSettings insted of send as parameter.
+            services.AddDatabaseContext(connectionString);
+            services.AddIdentityServer2(connectionString);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app)
         {
+            app.UseDeveloperExceptionPage();
+
+            Seeder.InitializeDbTestData(app);
+
             app.UseStaticFiles();
             app.UseRouting();
 

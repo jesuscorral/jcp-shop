@@ -90,7 +90,9 @@ namespace JCP.IdentityServer.API
         // IdentityResource is information that includes user information such as userId, email, name,
         // has a unique name and we can assign claim types linked to them.Identity Resource information defined for a user is included
         // in the identity token.We can use Identity Resource that we defined with scope parameter in client settings.
-        public static IEnumerable<IdentityResource> IdentityResources =>
+        public static IEnumerable<IdentityResource> GetIdentityResources()
+        {
+            return
           new IdentityResource[]
           {
               new IdentityResources.OpenId(),
@@ -101,18 +103,22 @@ namespace JCP.IdentityServer.API
                     "Your role(s)",
                     new List<string>() { "role" })
           };
+        }
 
-        public static IEnumerable<ApiScope> ApiScopes =>
-          new ApiScope[]
-          {
+        public static IEnumerable<ApiScope> ApiScopes()
+        {
+         return new ApiScope[]
+            {
                new ApiScope("CatalogAPI.read", "Read access catalog API"),
                new ApiScope("CatalogAPI.write", "Write access catalog API")
-          };
+            };
+        }
 
         // Test users that will use the client applications need to access the Apis.
         // So for client application we should also defined test users.
-        public static List<TestUser> TestUsers =>
-            new List<TestUser>
+        public static List<TestUser> GetTestUsers()
+        {
+            return new List<TestUser>
             {
                 new TestUser
                 {
@@ -126,5 +132,6 @@ namespace JCP.IdentityServer.API
                     }
                 }
             };
+        }
     }
 }
