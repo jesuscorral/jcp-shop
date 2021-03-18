@@ -19,11 +19,9 @@ namespace JCP.IdentityServer.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            // TODO - Move to secrets
-            const string connectionString = @"Data Source=.;database=JCP.IdentityServer.API;trusted_connection=yes;";
-            var migrationsAssembly = typeof(Startup).GetTypeInfo().Assembly.GetName().Name;
+            // Get the connection string from secrets
+            string connectionString = Configuration["ConnectionStrings:IdentityServerApiConnection"];
 
-            // TODO - Get connectionString from appSettings insted of send as parameter.
             services.AddDatabaseContext(connectionString);
             services.AddIdentityServer2(connectionString);
         }
