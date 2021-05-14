@@ -2,7 +2,7 @@
 
 namespace JCP.Catalog.Domain
 {
-    public class Catalog
+    public class Class1
     {
     }
 }

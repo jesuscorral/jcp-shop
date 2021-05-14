@@ -11,10 +11,9 @@ WORKDIR /src
 COPY "JCP-Shop.sln" "JCP-Shop.sln"
 
 COPY "BuildingBlocks/Logger/JCP.Logger/JCP.Logger.csproj" "BuildingBlocks/Logger/JCP.Logger/JCP.Logger.csproj"
-COPY "Services/Catalog/JCP.Catalog.API/JCP.Catalog.API.csproj" "Services/Catalog/JCP.Catalog.API/JCP.Catalog.API.csproj"
-COPY "Services/Catalog/JCP.Catalog.Domain/JCP.Catalog.Domain.csproj" "Services/Catalog/JCP.Catalog.Domain/JCP.Catalog.Domain.csproj"
-COPY "Services/Catalog/JCP.Catalog.Infrastructure/JCP.Catalog.Infrastructure.csproj" "Services/Catalog/JCP.Catalog.Infrastructure/JCP.Catalog.Infrastructure.csproj"
-COPY "Services/Catalog/JCP.Catalog.UnitTests/JCP.Catalog.UnitTests.csproj" "Services/Catalog/JCP.Catalog.UnitTests/JCP.Catalog.UnitTests.csproj"
+COPY "Services/Catalog/Presentation/JCP.Catalog.API/JCP.Catalog.API.csproj" "Services/Catalog/Presentation/JCP.Catalog.API/JCP.Catalog.API.csproj"
+COPY "Services/Catalog/Core/JCP.Catalog.Domain/JCP.Catalog.Domain.csproj" "Services/Catalog/Core/JCP.Catalog.Domain/JCP.Catalog.Domain.csproj"
+COPY "Services/Catalog/Infrastructure/JCP.Catalog.Infrastructure/JCP.Catalog.Infrastructure.csproj" "Services/Catalog/Infrastructure/JCP.Catalog.Infrastructure/JCP.Catalog.Infrastructure.csproj"
 COPY "Services/Ordering/JCP.Ordering.API/JCP.Ordering.API.csproj" "Services/Ordering/JCP.Ordering.API/JCP.Ordering.API.csproj"
 COPY "Services/Ordering/JCP.Ordering.UnitTests/JCP.Ordering.UnitTests.csproj" "Services/Ordering/JCP.Ordering.UnitTests/JCP.Ordering.UnitTests.csproj"
 
@@ -23,7 +22,7 @@ COPY "docker-compose.dcproj" "docker-compose.dcproj"
 RUN dotnet restore "JCP-Shop.sln"
 
 COPY . .
-WORKDIR "/src/Services/Catalog/JCP.Catalog.API"
+WORKDIR "/src/Services/Catalog/Presentation/JCP.Catalog.API"
 RUN dotnet publish --no-restore -c Release -o /app
 
 FROM build as unittest

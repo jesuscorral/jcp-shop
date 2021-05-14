@@ -3,12 +3,28 @@ version: '3.4'
 services:
   catalog-api:
     image: ${DOCKER_REGISTRY-}jcpcatalogapi
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://0.0.0.0:80
+      - PORT=80
+      - PATH_BASE=/catalog-api
+    ports:
+      - "5101:80"
+      - "5111:443"
     build:
       context: .
-      dockerfile: Services/Catalog/JCP.Catalog.API/Dockerfile
+      dockerfile: Services/Catalog/Presentation/JCP.Catalog.API/Dockerfile
 
   ordering-api:
     image: ${DOCKER_REGISTRY-}jcporderingapi
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://0.0.0.0:80
+      - PATH_BASE=/ordering-api
+      - PORT=80
+    ports:
+      - "5102:80"
+      - "5112:443"
     build:
       context: .
       dockerfile: Services/Ordering/JCP.Ordering.API/Dockerfile
