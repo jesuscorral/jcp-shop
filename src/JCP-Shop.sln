@@ -39,6 +39,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JCP.Catalog.API", "Services
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JCP.Catalog.Application", "Services\Catalog\Core\JCP.Catalog.Application\JCP.Catalog.Application.csproj", "{D3FAB45F-721E-4EC3-A55B-1A1A7562445E}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{CF39360E-7D21-4B76-BEBC-247D1F5D9822}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JCP.Catalog.UnitTests", "Services\Catalog\Tests\JCP.Catalog.UnitTests\JCP.Catalog.UnitTests.csproj", "{0D8A53BE-594C-4F4C-B8E7-7EC813C4DF1D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -77,6 +81,10 @@ Global
 		{D3FAB45F-721E-4EC3-A55B-1A1A7562445E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D3FAB45F-721E-4EC3-A55B-1A1A7562445E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D3FAB45F-721E-4EC3-A55B-1A1A7562445E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0D8A53BE-594C-4F4C-B8E7-7EC813C4DF1D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0D8A53BE-594C-4F4C-B8E7-7EC813C4DF1D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0D8A53BE-594C-4F4C-B8E7-7EC813C4DF1D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0D8A53BE-594C-4F4C-B8E7-7EC813C4DF1D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -98,6 +106,8 @@ Global
 		{9A48E66C-7BA2-499C-8EF9-CD42D20EF9BF} = {3FC90CAD-8665-4C1D-9769-E3F523C76016}
 		{56E4A7F0-890E-4E36-A9DD-4008369C90B0} = {C4FA247C-A3E4-422F-8447-E80194BFDCA5}
 		{D3FAB45F-721E-4EC3-A55B-1A1A7562445E} = {F1228D43-2461-4DA7-A6B9-E245B7EFC2C5}
+		{CF39360E-7D21-4B76-BEBC-247D1F5D9822} = {92AF550B-2F7D-4183-9A38-A420E03E2348}
+		{0D8A53BE-594C-4F4C-B8E7-7EC813C4DF1D} = {CF39360E-7D21-4B76-BEBC-247D1F5D9822}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {7002BA4D-6AD1-4D80-8549-94CE5A5272F2}

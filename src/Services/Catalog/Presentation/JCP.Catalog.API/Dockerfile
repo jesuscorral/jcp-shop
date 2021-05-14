@@ -13,7 +13,9 @@ COPY "JCP-Shop.sln" "JCP-Shop.sln"
 COPY "BuildingBlocks/Logger/JCP.Logger/JCP.Logger.csproj" "BuildingBlocks/Logger/JCP.Logger/JCP.Logger.csproj"
 COPY "Services/Catalog/Presentation/JCP.Catalog.API/JCP.Catalog.API.csproj" "Services/Catalog/Presentation/JCP.Catalog.API/JCP.Catalog.API.csproj"
 COPY "Services/Catalog/Core/JCP.Catalog.Domain/JCP.Catalog.Domain.csproj" "Services/Catalog/Core/JCP.Catalog.Domain/JCP.Catalog.Domain.csproj"
+COPY "Services/Catalog/Core/JCP.Catalog.Aplication/JCP.Catalog.Aplication.csproj" "Services/Catalog/Core/JCP.Catalog.Aplication/JCP.Catalog.Aplication.csproj"
 COPY "Services/Catalog/Infrastructure/JCP.Catalog.Infrastructure/JCP.Catalog.Infrastructure.csproj" "Services/Catalog/Infrastructure/JCP.Catalog.Infrastructure/JCP.Catalog.Infrastructure.csproj"
+COPY "Services/Catalog/Tests/JCP.Catalog.UnitTests/JCP.Catalog.UnitTests.csproj" "Services/Catalog/Tests/JCP.Catalog.UnitTests/JCP.Catalog.UnitTests.csproj"
 COPY "Services/Ordering/JCP.Ordering.API/JCP.Ordering.API.csproj" "Services/Ordering/JCP.Ordering.API/JCP.Ordering.API.csproj"
 COPY "Services/Ordering/JCP.Ordering.UnitTests/JCP.Ordering.UnitTests.csproj" "Services/Ordering/JCP.Ordering.UnitTests/JCP.Ordering.UnitTests.csproj"
 
@@ -26,7 +28,7 @@ WORKDIR "/src/Services/Catalog/Presentation/JCP.Catalog.API"
 RUN dotnet publish --no-restore -c Release -o /app
 
 FROM build as unittest
-WORKDIR /src/Services/Catalog/Catalog.UnitTests
+WORKDIR /src/Services/Catalog/JCP.Catalog.UnitTests
 
 FROM build AS publish
 
