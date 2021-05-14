@@ -37,6 +37,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JCP.Catalog.Infrastructure"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JCP.Catalog.API", "Services\Catalog\Presentation\JCP.Catalog.API\JCP.Catalog.API.csproj", "{56E4A7F0-890E-4E36-A9DD-4008369C90B0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JCP.Catalog.Application", "Services\Catalog\Core\JCP.Catalog.Application\JCP.Catalog.Application.csproj", "{D3FAB45F-721E-4EC3-A55B-1A1A7562445E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -71,6 +73,10 @@ Global
 		{56E4A7F0-890E-4E36-A9DD-4008369C90B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{56E4A7F0-890E-4E36-A9DD-4008369C90B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{56E4A7F0-890E-4E36-A9DD-4008369C90B0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D3FAB45F-721E-4EC3-A55B-1A1A7562445E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D3FAB45F-721E-4EC3-A55B-1A1A7562445E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D3FAB45F-721E-4EC3-A55B-1A1A7562445E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D3FAB45F-721E-4EC3-A55B-1A1A7562445E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -91,6 +97,7 @@ Global
 		{A354E210-4792-4C7A-AE6B-65F7DE82B8F8} = {F1228D43-2461-4DA7-A6B9-E245B7EFC2C5}
 		{9A48E66C-7BA2-499C-8EF9-CD42D20EF9BF} = {3FC90CAD-8665-4C1D-9769-E3F523C76016}
 		{56E4A7F0-890E-4E36-A9DD-4008369C90B0} = {C4FA247C-A3E4-422F-8447-E80194BFDCA5}
+		{D3FAB45F-721E-4EC3-A55B-1A1A7562445E} = {F1228D43-2461-4DA7-A6B9-E245B7EFC2C5}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {7002BA4D-6AD1-4D80-8549-94CE5A5272F2}
