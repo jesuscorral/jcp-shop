@@ -20,7 +20,7 @@ services:
       - PORT=80
       - PATH_BASE=/catalog-api
       - SQL_HOSTNAME=sql-server
-      - SQL_PORT=5434
+      - SQL_PORT=1433
     ports:
       - "5101:80"
       - "5111:443"

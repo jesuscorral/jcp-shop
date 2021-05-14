@@ -10,6 +10,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Core\JCP.Catalog.Application\JCP.Catalog.Application.csproj" />
     <ProjectReference Include="..\..\Core\JCP.Catalog.Domain\JCP.Catalog.Domain.csproj" />
   </ItemGroup>
 </Project>

@@ -1,14 +1,12 @@
 using JCP.Catalog.API.Helperes;
-using JCP.Logger;
-using MediatR;
+using JCP.Catalog.Application.Helpers;
+using JCP.Catalog.Infrastructure.Helpers;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.OpenApi.Models;
 using System;
-using System.Reflection;
 
 namespace JCP.Catalog.API
 {
@@ -24,13 +22,15 @@ namespace JCP.Catalog.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         { 
-            var connectionString = BuildConnectionString(); 
-            
+            var connectionString = BuildConnectionString();
+
             services.AddControllers()
                 .Services
                 .AddDatabaseContext(connectionString)
                 .AddCustomSwagger()
-                .AddCustomMeadiatR();
+                .AddApplicationLayer();
+
+            services.AddRepositories();
         }
 
         private string BuildConnectionString()
