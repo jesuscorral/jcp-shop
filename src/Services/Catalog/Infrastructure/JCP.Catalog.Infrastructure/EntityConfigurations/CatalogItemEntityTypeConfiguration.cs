@@ -14,8 +14,7 @@ namespace JCP.Catalog.Infrastructure.EntityConfigurations
             catalogConfiguration.Property(b => b.Name)
                 .IsRequired();
             catalogConfiguration.Property(b => b.Rate)
-                .HasColumnType("float")
-                .HasPrecision(6,2);
+                .HasPrecision(4, 2);
         }
     }
 }

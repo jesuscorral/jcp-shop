@@ -1,6 +1,8 @@
 ﻿using JCP.Catalog.Application.Interfaces.Repositories;
 using JCP.Catalog.Domain.CatalogItemAggregate;
+using Microsoft.EntityFrameworkCore;
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace JCP.Catalog.Infrastructure.Repositories
@@ -18,6 +20,11 @@ namespace JCP.Catalog.Infrastructure.Repositories
         {
             await _catalogContext.AddAsync(catalogItem);
             return catalogItem.Id;
+        }
+
+        public async Task<List<CatalogItem>> GetListAsync()
+        {
+            return await _catalogContext.CatalogItems.ToListAsync();
         }
     }
 }
