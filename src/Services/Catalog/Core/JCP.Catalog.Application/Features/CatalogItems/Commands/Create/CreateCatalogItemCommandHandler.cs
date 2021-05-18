@@ -6,7 +6,7 @@ using System;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace JCP.Catalog.Application.Features.Catalogs.Commands.Create
+namespace JCP.Catalog.Application.Features.CatalogItems.Commands.Create
 {
     public class CreateCatalogItemCommandHandler : IRequestHandler<CreateCatalogItemCommand, CreateCatalogItemResponse>
     {

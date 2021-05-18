@@ -1,7 +1,7 @@
 ﻿using MediatR;
 using System.Collections.Generic;
 
-namespace JCP.Catalog.Application.Features.Catalogs.Queries.GetAll
+namespace JCP.Catalog.Application.Features.CatalogItems.Queries.GetAll
 {
     public class GetAllCatalogItemsQuery : IRequest<List<GetAllCatalogItemsResponse>>
     {

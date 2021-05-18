@@ -1,8 +1,6 @@
-﻿using MediatR;
-
-namespace JCP.Catalog.Application.Features.Catalogs.Commands.Create
+﻿namespace JCP.Catalog.Application.Features.CatalogItems.Queries.GetAll
 {
-    public partial class CreateCatalogItemCommand : IRequest<CreateCatalogItemResponse>
+    public class GetAllCatalogItemsResponse
     {
         public string Name { get; set; }
         public string Barcode { get; set; }

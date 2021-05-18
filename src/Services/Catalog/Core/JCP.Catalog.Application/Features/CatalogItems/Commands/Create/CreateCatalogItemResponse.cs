@@ -1,4 +1,4 @@
-﻿namespace JCP.Catalog.Application.Features.Catalogs.Commands.Create
+﻿namespace JCP.Catalog.Application.Features.CatalogItems.Commands.Create
 {
     public record CreateCatalogItemResponse
     {

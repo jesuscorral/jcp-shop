@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace JCP.Catalog.Application.Features.Catalogs.Queries.GetAll
+namespace JCP.Catalog.Application.Features.CatalogItems.Queries.GetAll
 {
     public class GetAllCatalogItemsQueryHandler : IRequestHandler<GetAllCatalogItemsQuery, List<GetAllCatalogItemsResponse>>
     {
@@ -23,8 +23,7 @@ namespace JCP.Catalog.Application.Features.Catalogs.Queries.GetAll
         public async Task<List<GetAllCatalogItemsResponse>> Handle(GetAllCatalogItemsQuery request, CancellationToken cancellationToken)
         {
             var catalogItems = await _catalogItemRepository.GetListAsync();
-            var mappedBrands = _mapper.Map<List<GetAllCatalogItemsResponse>>(catalogItems);
-            return mappedBrands;
+            return _mapper.Map<List<GetAllCatalogItemsResponse>>(catalogItems);
         }
     }
 }

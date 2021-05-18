@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
-using JCP.Catalog.Application.Features.Catalogs.Commands.Create;
-using JCP.Catalog.Application.Features.Catalogs.Queries.GetAll;
+using JCP.Catalog.Application.Features.CatalogItems.Commands.Create;
+using JCP.Catalog.Application.Features.CatalogItems.Queries.GetAll;
 using JCP.Catalog.Domain.CatalogItemAggregate;
 
 namespace JCP.Catalog.Application.Mappers
