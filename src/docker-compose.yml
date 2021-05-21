@@ -1,15 +1,52 @@
-version: '3.4'
+version: '3.8'
 
 services:
+  sql-server:
+    image: microsoft/mssql-server-linux:latest    
+    container_name: sqlServer
+    environment:
+      - SA_PASSWORD=Pass@word
+      - ACCEPT_EULA=Y
+    ports:
+      - "5434:1433"
+    volumes:
+      - mssql-server-linux-data:/var/opt/mssql/data
+
   catalog-api:
     image: ${DOCKER_REGISTRY-}jcpcatalogapi
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://0.0.0.0:80
+      - PORT=80
+      - PATH_BASE=/catalog-api
+      - SQL_HOSTNAME=sql-server
+      - SQL_PORT=1433
+    ports:
+      - "5101:80"
+      - "5111:443"
     build:
       context: .
-      dockerfile: Services/Catalog/JCP.Catalog.API/Dockerfile
+      dockerfile: Services/Catalog/Presentation/JCP.Catalog.API/Dockerfile
+    restart: on-failure
+    depends_on:
+      - sql-server
 
   ordering-api:
     image: ${DOCKER_REGISTRY-}jcporderingapi
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://0.0.0.0:80
+      - PATH_BASE=/ordering-api
+      - PORT=80
+    ports:
+      - "5102:80"
+      - "5112:443"
     build:
       context: .
       dockerfile: Services/Ordering/JCP.Ordering.API/Dockerfile
+    restart: on-failure
+    depends_on:
+      - sql-server
 
+volumes:
+  mssql-server-linux-data:
