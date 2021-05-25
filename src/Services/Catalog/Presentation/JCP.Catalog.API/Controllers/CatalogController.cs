@@ -26,7 +26,7 @@ namespace JCP.Catalog.API.Controllers
         [ProducesResponseType((int)HttpStatusCode.Created)]
         public async Task<IActionResult> AddCatalogItem([FromBody] CreateCatalogItemCommand command)
         {
-            return base.Ok(await _mediator.Send(command));
+            return Ok(await _mediator.Send(command));
         }
 
         [Route("all")]

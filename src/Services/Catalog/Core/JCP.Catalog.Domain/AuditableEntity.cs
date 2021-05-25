@@ -2,6 +2,7 @@
 
 namespace JCP.Catalog.Domain
 {
+    // TODO: Move to common project to be used from all projects
     public abstract class AuditableEntity
     {
         public int Id { get; set; }

@@ -1,6 +1,6 @@
-using JCP.Catalog.API.Helperes;
-using JCP.Catalog.Application.Helpers;
-using JCP.Catalog.Infrastructure.Helpers;
+using JCP.Ordering.API.Helpers;
+using JCP.Ordering.Application.Helperes;
+using JCP.Ordering.Infrastructure.Helpers;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -8,7 +8,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System;
 
-namespace JCP.Catalog.API
+namespace JCP.Ordering.API
 {
     public class Startup
     {
@@ -21,7 +21,7 @@ namespace JCP.Catalog.API
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
-        { 
+        {
             var connectionString = BuildConnectionString();
 
             services.AddControllers()
@@ -40,7 +40,7 @@ namespace JCP.Catalog.API
             {
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "JCP.Catalog.API v1"));
+                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "JCP.Ordering.API v1"));
             }
 
             app.UseHttpsRedirection();
@@ -57,11 +57,11 @@ namespace JCP.Catalog.API
 
         private string BuildConnectionString()
         {
-            var sqlHostName = Environment.GetEnvironmentVariable("SQL_HOSTNAME") ?? _configuration.GetValue<string>("ConnectionStrings:jcp-catalog:hostName");
-            var sqlPort = Environment.GetEnvironmentVariable("SQL_PORT") ?? _configuration.GetValue<string>("ConnectionStrings:jcp-catalog:port");
-            var sqlCatalog = _configuration.GetValue<string>("ConnectionStrings:jcp-catalog:catalog");
-            var sqlUser = _configuration.GetValue<string>("ConnectionStrings:jcp-catalog:user");
-            var sqlPassword = _configuration.GetValue<string>("ConnectionStrings:jcp-catalog:password");
+            var sqlHostName = Environment.GetEnvironmentVariable("SQL_HOSTNAME") ?? _configuration.GetValue<string>("ConnectionStrings:jcp-ordering:hostName");
+            var sqlPort = Environment.GetEnvironmentVariable("SQL_PORT") ?? _configuration.GetValue<string>("ConnectionStrings:jcp-ordering:port");
+            var sqlCatalog = _configuration.GetValue<string>("ConnectionStrings:jcp-ordering:ordering");
+            var sqlUser = _configuration.GetValue<string>("ConnectionStrings:jcp-ordering:user");
+            var sqlPassword = _configuration.GetValue<string>("ConnectionStrings:jcp-ordering:password");
 
             return $"Server={sqlHostName}, {sqlPort};Initial Catalog={sqlCatalog};User ID={sqlUser};Password={sqlPassword}";
 

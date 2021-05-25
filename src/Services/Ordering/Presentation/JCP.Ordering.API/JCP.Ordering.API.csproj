@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
-    <UserSecretsId>9e0f9ab5-0ed3-4dda-928a-82845304d54e</UserSecretsId>
+    <UserSecretsId>bc60d6bc-1c0e-45fb-8da4-07957c742490</UserSecretsId>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
     <DockerfileContext>..\..\..</DockerfileContext>
     <DockerComposeProjectPath>..\..\..\docker-compose.dcproj</DockerComposeProjectPath>
@@ -26,9 +26,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\BuildingBlocks\Logger\JCP.Logger\JCP.Logger.csproj" />
-    <ProjectReference Include="..\..\Core\JCP.Catalog.Application\JCP.Catalog.Application.csproj" />
-    <ProjectReference Include="..\..\Infrastructure\JCP.Catalog.Infrastructure\JCP.Catalog.Infrastructure.csproj" />
+    <ProjectReference Include="..\..\Core\JCP.Ordering.Application\JCP.Ordering.Application.csproj" />
+    <ProjectReference Include="..\..\Infrastructure\JCP.Ordering.Infrastructure\JCP.Ordering.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>
