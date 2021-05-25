@@ -1,29 +1,36 @@
+using JCP.Ordering.API.Helpers;
+using JCP.Ordering.Application.Helperes;
+using JCP.Ordering.Infrastructure.Helpers;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.OpenApi.Models;
+using System;
 
 namespace JCP.Ordering.API
 {
     public class Startup
     {
+        private readonly IConfiguration _configuration;
+
         public Startup(IConfiguration configuration)
         {
-            Configuration = configuration;
+            _configuration = configuration;
         }
-
-        public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllers();
-            services.AddSwaggerGen(c =>
-            {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "JCP.Ordering.API", Version = "v1" });
-            });
+            var connectionString = BuildConnectionString();
+
+            services.AddControllers()
+                .Services
+                .AddDatabaseContext(connectionString)
+                .AddCustomSwagger()
+                .AddApplicationLayer();
+
+            services.AddRepositories();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -46,6 +53,18 @@ namespace JCP.Ordering.API
             {
                 endpoints.MapControllers();
             });
+        }
+
+        private string BuildConnectionString()
+        {
+            var sqlHostName = Environment.GetEnvironmentVariable("SQL_HOSTNAME") ?? _configuration.GetValue<string>("ConnectionStrings:jcp-ordering:hostName");
+            var sqlPort = Environment.GetEnvironmentVariable("SQL_PORT") ?? _configuration.GetValue<string>("ConnectionStrings:jcp-ordering:port");
+            var sqlCatalog = _configuration.GetValue<string>("ConnectionStrings:jcp-ordering:ordering");
+            var sqlUser = _configuration.GetValue<string>("ConnectionStrings:jcp-ordering:user");
+            var sqlPassword = _configuration.GetValue<string>("ConnectionStrings:jcp-ordering:password");
+
+            return $"Server={sqlHostName}, {sqlPort};Initial Catalog={sqlCatalog};User ID={sqlUser};Password={sqlPassword}";
+
         }
     }
 }

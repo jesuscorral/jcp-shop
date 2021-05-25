@@ -28,7 +28,6 @@
   <ItemGroup>
     <ProjectReference Include="..\..\..\..\BuildingBlocks\Logger\JCP.Logger\JCP.Logger.csproj" />
     <ProjectReference Include="..\..\Core\JCP.Catalog.Application\JCP.Catalog.Application.csproj" />
-    <ProjectReference Include="..\..\Core\JCP.Catalog.Domain\JCP.Catalog.Domain.csproj" />
     <ProjectReference Include="..\..\Infrastructure\JCP.Catalog.Infrastructure\JCP.Catalog.Infrastructure.csproj" />
   </ItemGroup>
 

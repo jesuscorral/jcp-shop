@@ -33,18 +33,6 @@ namespace JCP.Catalog.API
             services.AddRepositories();
         }
 
-        private string BuildConnectionString()
-        {
-            var sqlHostName = Environment.GetEnvironmentVariable("SQL_HOSTNAME") ?? _configuration.GetValue<string>("ConnectionStrings:jcp-catalog:hostName");
-            var sqlPort = Environment.GetEnvironmentVariable("SQL_PORT") ?? _configuration.GetValue<string>("ConnectionStrings:jcp-catalog:port");
-            var sqlCatalog = _configuration.GetValue<string>("ConnectionStrings:jcp-catalog:catalog");
-            var sqlUser = _configuration.GetValue<string>("ConnectionStrings:jcp-catalog:user");
-            var sqlPassword = _configuration.GetValue<string>("ConnectionStrings:jcp-catalog:password");
-
-            return $"Server={sqlHostName}, {sqlPort};Initial Catalog={sqlCatalog};User ID={sqlUser};Password={sqlPassword}";
-
-        }
-
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
@@ -65,6 +53,18 @@ namespace JCP.Catalog.API
             {
                 endpoints.MapControllers();
             });
+        }
+
+        private string BuildConnectionString()
+        {
+            var sqlHostName = Environment.GetEnvironmentVariable("SQL_HOSTNAME") ?? _configuration.GetValue<string>("ConnectionStrings:jcp-catalog:hostName");
+            var sqlPort = Environment.GetEnvironmentVariable("SQL_PORT") ?? _configuration.GetValue<string>("ConnectionStrings:jcp-catalog:port");
+            var sqlCatalog = _configuration.GetValue<string>("ConnectionStrings:jcp-catalog:catalog");
+            var sqlUser = _configuration.GetValue<string>("ConnectionStrings:jcp-catalog:user");
+            var sqlPassword = _configuration.GetValue<string>("ConnectionStrings:jcp-catalog:password");
+
+            return $"Server={sqlHostName}, {sqlPort};Initial Catalog={sqlCatalog};User ID={sqlUser};Password={sqlPassword}";
+
         }
     }
 }
