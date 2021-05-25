@@ -43,7 +43,7 @@ services:
       - "5112:443"
     build:
       context: .
-      dockerfile: Services/Ordering/JCP.Ordering.API/Dockerfile
+      dockerfile: Services/Ordering/Presentation/JCP.Ordering.API/Dockerfile
     restart: on-failure
     depends_on:
       - sql-server

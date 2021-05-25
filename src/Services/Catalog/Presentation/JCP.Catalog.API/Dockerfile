@@ -13,11 +13,15 @@ COPY "JCP-Shop.sln" "JCP-Shop.sln"
 COPY "BuildingBlocks/Logger/JCP.Logger/JCP.Logger.csproj" "BuildingBlocks/Logger/JCP.Logger/JCP.Logger.csproj"
 COPY "Services/Catalog/Presentation/JCP.Catalog.API/JCP.Catalog.API.csproj" "Services/Catalog/Presentation/JCP.Catalog.API/JCP.Catalog.API.csproj"
 COPY "Services/Catalog/Core/JCP.Catalog.Domain/JCP.Catalog.Domain.csproj" "Services/Catalog/Core/JCP.Catalog.Domain/JCP.Catalog.Domain.csproj"
-COPY "Services/Catalog/Core/JCP.Catalog.Aplication/JCP.Catalog.Aplication.csproj" "Services/Catalog/Core/JCP.Catalog.Aplication/JCP.Catalog.Aplication.csproj"
+COPY "Services/Catalog/Core/JCP.Catalog.Application/JCP.Catalog.Application.csproj" "Services/Catalog/Core/JCP.Catalog.Application/JCP.Catalog.Application.csproj"
 COPY "Services/Catalog/Infrastructure/JCP.Catalog.Infrastructure/JCP.Catalog.Infrastructure.csproj" "Services/Catalog/Infrastructure/JCP.Catalog.Infrastructure/JCP.Catalog.Infrastructure.csproj"
 COPY "Services/Catalog/Tests/JCP.Catalog.UnitTests/JCP.Catalog.UnitTests.csproj" "Services/Catalog/Tests/JCP.Catalog.UnitTests/JCP.Catalog.UnitTests.csproj"
-COPY "Services/Ordering/JCP.Ordering.API/JCP.Ordering.API.csproj" "Services/Ordering/JCP.Ordering.API/JCP.Ordering.API.csproj"
-COPY "Services/Ordering/JCP.Ordering.UnitTests/JCP.Ordering.UnitTests.csproj" "Services/Ordering/JCP.Ordering.UnitTests/JCP.Ordering.UnitTests.csproj"
+
+COPY "Services/Ordering/Presentation/JCP.Ordering.API/JCP.Ordering.API.csproj" "Services/Ordering/Presentation/JCP.Ordering.API/JCP.Ordering.API.csproj"
+COPY "Services/Ordering/Core/JCP.Ordering.Domain/JCP.Ordering.Domain.csproj" "Services/Ordering/Core/JCP.Ordering.Domain/JCP.Ordering.Domain.csproj"
+COPY "Services/Ordering/Core/JCP.Ordering.Application/JCP.Ordering.Application.csproj" "Services/Ordering/Core/JCP.Ordering.Application/JCP.Ordering.Application.csproj"
+COPY "Services/Ordering/Infrastructure/JCP.Ordering.Infrastructure/JCP.Ordering.Infrastructure.csproj" "Services/Ordering/Infrastructure/JCP.Ordering.Infrastructure/JCP.Ordering.Infrastructure.csproj"
+COPY "Services/Ordering/Tests/JCP.Ordering.UnitTests/JCP.Ordering.UnitTests.csproj" "Services/Ordering/Tests/JCP.Ordering.UnitTests/JCP.Ordering.UnitTests.csproj"
 
 COPY "docker-compose.dcproj" "docker-compose.dcproj"
 
@@ -28,7 +32,7 @@ WORKDIR "/src/Services/Catalog/Presentation/JCP.Catalog.API"
 RUN dotnet publish --no-restore -c Release -o /app
 
 FROM build as unittest
-WORKDIR /src/Services/Catalog/JCP.Catalog.UnitTests
+WORKDIR /src/Services/Catalog/Tests/JCP.Catalog.UnitTests
 
 FROM build AS publish
 
