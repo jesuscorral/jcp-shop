@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Options;
 using System;
 
 namespace JCP.Catalog.API
@@ -31,6 +32,8 @@ namespace JCP.Catalog.API
                 .AddApplicationLayer();
 
             services.AddRepositories();
+
+            services.Configure<RabbitMqSettings>(_configuration);
 
             services.AddCustomIntegrations(_configuration);
             services.RegisterEventBus(_configuration);

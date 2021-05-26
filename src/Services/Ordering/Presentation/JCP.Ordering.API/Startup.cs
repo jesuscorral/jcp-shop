@@ -32,6 +32,8 @@ namespace JCP.Ordering.API
                 .AddCustomIntegrations(_configuration)
                 .AddApplicationLayer();
 
+            services.Configure<RabbitMqSettings>(_configuration);
+
             services.RegisterEventBus(_configuration);
 
             services.AddRepositories();

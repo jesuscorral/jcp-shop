@@ -35,8 +35,8 @@ services:
       - SQL_HOSTNAME=sql-server
       - SQL_PORT=1433
     ports:
-      - "5101:80"
-      - "5111:443"
+      - "5020:80"
+      - "2021:443"
     build:
       context: .
       dockerfile: Services/Catalog/Presentation/JCP.Catalog.API/Dockerfile
@@ -58,8 +58,8 @@ services:
       - SQL_HOSTNAME=sql-server
       - SQL_PORT=1433
     ports:
-      - "5102:80"
-      - "5112:443"
+      - "5010:80"
+      - "5011:443"
     build:
       context: .
       dockerfile: Services/Ordering/Presentation/JCP.Ordering.API/Dockerfile
