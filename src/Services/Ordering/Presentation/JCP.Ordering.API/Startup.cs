@@ -7,6 +7,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System;
+using System.Configuration;
 
 namespace JCP.Ordering.API
 {
@@ -26,9 +27,12 @@ namespace JCP.Ordering.API
 
             services.AddControllers()
                 .Services
-                .AddDatabaseContext(connectionString)
+                .AddDatabaseContext(connectionString, _configuration)
                 .AddCustomSwagger()
+                .AddCustomIntegrations(_configuration)
                 .AddApplicationLayer();
+
+            services.RegisterEventBus(_configuration);
 
             services.AddRepositories();
         }
@@ -57,11 +61,11 @@ namespace JCP.Ordering.API
 
         private string BuildConnectionString()
         {
-            var sqlHostName = Environment.GetEnvironmentVariable("SQL_HOSTNAME") ?? _configuration.GetValue<string>("ConnectionStrings:jcp-ordering:hostName");
-            var sqlPort = Environment.GetEnvironmentVariable("SQL_PORT") ?? _configuration.GetValue<string>("ConnectionStrings:jcp-ordering:port");
-            var sqlCatalog = _configuration.GetValue<string>("ConnectionStrings:jcp-ordering:ordering");
-            var sqlUser = _configuration.GetValue<string>("ConnectionStrings:jcp-ordering:user");
-            var sqlPassword = _configuration.GetValue<string>("ConnectionStrings:jcp-ordering:password");
+            var sqlHostName = Environment.GetEnvironmentVariable("SQL_HOSTNAME") ?? _configuration.GetValue<string>("OrderingDatabaseSettings:hostName");
+            var sqlPort = Environment.GetEnvironmentVariable("SQL_PORT") ?? _configuration.GetValue<string>("OrderingDatabaseSettings:port");
+            var sqlCatalog = _configuration.GetValue<string>("OrderingDatabaseSettings:dbName");
+            var sqlUser = _configuration.GetValue<string>("OrderingDatabaseSettings:user");
+            var sqlPassword = _configuration.GetValue<string>("OrderingDatabaseSettings:password");
 
             return $"Server={sqlHostName}, {sqlPort};Initial Catalog={sqlCatalog};User ID={sqlUser};Password={sqlPassword}";
 
