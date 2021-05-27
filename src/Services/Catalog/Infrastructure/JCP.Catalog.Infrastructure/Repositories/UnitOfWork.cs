@@ -29,8 +29,8 @@ namespace JCP.Catalog.Infrastructure.Repositories
                 {
                     dbContextTransaction.Rollback();
                 }
-
             }
+
             return ret;
         }
 
@@ -53,7 +53,5 @@ namespace JCP.Catalog.Infrastructure.Repositories
             //dispose unmanaged resources
             disposed = true;
         }
-
-
     }
 }

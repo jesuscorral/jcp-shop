@@ -22,8 +22,8 @@ namespace JCP.Catalog.UnitTests.Common
                 var mapper = mapperConfig.CreateMapper();
                 _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
             }
-
         }
+
         public void Dispose()
         {
             // Cleanup here
