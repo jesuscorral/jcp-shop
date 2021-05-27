@@ -12,41 +12,61 @@ services:
     volumes:
       - mssql-server-linux-data:/var/opt/mssql/data
 
+  rabbitmq:
+    image: 'rabbitmq:3.6-management-alpine'
+    container_name: rabbitmq
+    environment:
+      - RABBITMQ_DEFAULT_USER=guest
+      - RABBITMQ_DEFAULT_PASS=guest
+    ports:
+      - 5672:5672
+      - 15672:15672
+
   catalog-api:
     image: ${DOCKER_REGISTRY-}jcpcatalogapi
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_URLS=http://0.0.0.0:80
+      - RABBITMQ_HOSTNAME=rabbitmq
+      - RABBITMQ_DEFAULT_USER=guest
+      - RABBITMQ_DEFAULT_PASS=guest
       - PORT=80
       - PATH_BASE=/catalog-api
       - SQL_HOSTNAME=sql-server
       - SQL_PORT=1433
     ports:
-      - "5101:80"
-      - "5111:443"
+      - "5020:80"
+      - "2021:443"
     build:
       context: .
       dockerfile: Services/Catalog/Presentation/JCP.Catalog.API/Dockerfile
     restart: on-failure
     depends_on:
       - sql-server
+      - rabbitmq
 
   ordering-api:
     image: ${DOCKER_REGISTRY-}jcporderingapi
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_URLS=http://0.0.0.0:80
-      - PATH_BASE=/ordering-api
+      - RABBITMQ_HOSTNAME=rabbitmq
+      - RABBITMQ_DEFAULT_USER=guest
+      - RABBITMQ_DEFAULT_PASS=guest
       - PORT=80
+      - PATH_BASE=/ordering-api
+      - SQL_HOSTNAME=sql-server
+      - SQL_PORT=1433
     ports:
-      - "5102:80"
-      - "5112:443"
+      - "5010:80"
+      - "5011:443"
     build:
       context: .
       dockerfile: Services/Ordering/Presentation/JCP.Ordering.API/Dockerfile
     restart: on-failure
     depends_on:
       - sql-server
+      - rabbitmq
 
 volumes:
   mssql-server-linux-data:

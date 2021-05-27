@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Options;
 using System;
 
 namespace JCP.Catalog.API
@@ -31,6 +32,11 @@ namespace JCP.Catalog.API
                 .AddApplicationLayer();
 
             services.AddRepositories();
+
+            services.Configure<RabbitMqSettings>(_configuration);
+
+            services.AddCustomIntegrations(_configuration);
+            services.RegisterEventBus(_configuration);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -53,17 +59,19 @@ namespace JCP.Catalog.API
             {
                 endpoints.MapControllers();
             });
+
+            app.ConfigureEventBus();
         }
 
         private string BuildConnectionString()
         {
-            var sqlHostName = Environment.GetEnvironmentVariable("SQL_HOSTNAME") ?? _configuration.GetValue<string>("ConnectionStrings:jcp-catalog:hostName");
-            var sqlPort = Environment.GetEnvironmentVariable("SQL_PORT") ?? _configuration.GetValue<string>("ConnectionStrings:jcp-catalog:port");
-            var sqlCatalog = _configuration.GetValue<string>("ConnectionStrings:jcp-catalog:catalog");
-            var sqlUser = _configuration.GetValue<string>("ConnectionStrings:jcp-catalog:user");
-            var sqlPassword = _configuration.GetValue<string>("ConnectionStrings:jcp-catalog:password");
+            var sqlHostName = Environment.GetEnvironmentVariable("SQL_HOSTNAME") ?? _configuration.GetValue<string>("CatalogDatabaseSettings:hostName");
+            var sqlPort = Environment.GetEnvironmentVariable("SQL_PORT") ?? _configuration.GetValue<string>("CatalogDatabaseSettings:port");
+            var dbName = _configuration.GetValue<string>("CatalogDatabaseSettings:dbName");
+            var sqlUser = _configuration.GetValue<string>("CatalogDatabaseSettings:user");
+            var sqlPassword = _configuration.GetValue<string>("CatalogDatabaseSettings:password");
 
-            return $"Server={sqlHostName}, {sqlPort};Initial Catalog={sqlCatalog};User ID={sqlUser};Password={sqlPassword}";
+            return $"Server={sqlHostName}, {sqlPort};Initial Catalog={dbName};User ID={sqlUser};Password={sqlPassword}";
 
         }
     }

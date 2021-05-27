@@ -9,6 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Autofac.Extensions.DependencyInjection" Version="7.1.0" />
     <PackageReference Include="MediatR" Version="9.0.0" />
     <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="9.0.0" />
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.10.9" />
@@ -26,7 +27,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\..\..\BuildingBlocks\EventBus\EventBusRabbitMQ\EventBusRabbitMQ.csproj" />
+    <ProjectReference Include="..\..\..\..\BuildingBlocks\EventBus\EventBus\EventBus\EventBus.csproj" />
     <ProjectReference Include="..\..\..\..\BuildingBlocks\Logger\JCP.Logger\JCP.Logger.csproj" />
+    <ProjectReference Include="..\..\..\Ordering\Core\JCP.Ordering.Application\JCP.Ordering.Application.csproj" />
     <ProjectReference Include="..\..\Core\JCP.Catalog.Application\JCP.Catalog.Application.csproj" />
     <ProjectReference Include="..\..\Infrastructure\JCP.Catalog.Infrastructure\JCP.Catalog.Infrastructure.csproj" />
   </ItemGroup>

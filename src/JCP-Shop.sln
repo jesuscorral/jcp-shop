@@ -39,21 +39,27 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JCP.Catalog.UnitTests", "Se
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentation", "{5FE4BDCB-5CE2-41B4-957A-60C66CB8A03D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JCP.Ordering.API", "Services\Ordering\Presentation\JCP.Ordering.API\JCP.Ordering.API.csproj", "{069EE9FF-618C-45BB-A6D7-53283DF28699}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JCP.Ordering.API", "Services\Ordering\Presentation\JCP.Ordering.API\JCP.Ordering.API.csproj", "{069EE9FF-618C-45BB-A6D7-53283DF28699}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{40270694-12C9-4065-8511-FB89612638AB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JCP.Ordering.UnitTests", "Services\Ordering\Tests\JCP.Ordering.UnitTests\JCP.Ordering.UnitTests.csproj", "{B8FCEE79-7847-4628-9550-1EBAE8807D81}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JCP.Ordering.UnitTests", "Services\Ordering\Tests\JCP.Ordering.UnitTests\JCP.Ordering.UnitTests.csproj", "{B8FCEE79-7847-4628-9550-1EBAE8807D81}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{B3ED6BEF-8D70-4E95-A0CD-4658EA0B83B6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JCP.Ordering.Application", "Services\Ordering\Core\JCP.Ordering.Application\JCP.Ordering.Application.csproj", "{E721A9F6-0822-40C8-8865-5131868E8AA4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JCP.Ordering.Application", "Services\Ordering\Core\JCP.Ordering.Application\JCP.Ordering.Application.csproj", "{E721A9F6-0822-40C8-8865-5131868E8AA4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JCP.Catalog.Domain", "Services\Ordering\Core\JCP.Catalog.Domain\JCP.Catalog.Domain.csproj", "{564624FD-F8CC-473A-B5B2-3972463EBC52}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JCP.Catalog.Domain", "Services\Ordering\Core\JCP.Catalog.Domain\JCP.Catalog.Domain.csproj", "{564624FD-F8CC-473A-B5B2-3972463EBC52}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{234A240C-50EA-4B2A-888F-501571428AEC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JCP.Ordering.Infrastructure", "Services\Ordering\Infrastructure\JCP.Ordering.Infrastructure\JCP.Ordering.Infrastructure.csproj", "{8DA5A66F-20AF-4A5C-AFAD-2CB345C33714}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JCP.Ordering.Infrastructure", "Services\Ordering\Infrastructure\JCP.Ordering.Infrastructure\JCP.Ordering.Infrastructure.csproj", "{8DA5A66F-20AF-4A5C-AFAD-2CB345C33714}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "EventBus", "EventBus", "{5091E60B-C388-419A-ACF9-70B7C15F443F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventBusRabbitMQ", "BuildingBlocks\EventBus\EventBusRabbitMQ\EventBusRabbitMQ.csproj", "{CD7C4B08-20D2-487D-BEC8-BFCA6339FE74}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventBus", "BuildingBlocks\EventBus\EventBus\EventBus\EventBus.csproj", "{2B17AD90-A138-4E32-AA56-60F35C80BDE5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -109,6 +115,14 @@ Global
 		{8DA5A66F-20AF-4A5C-AFAD-2CB345C33714}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8DA5A66F-20AF-4A5C-AFAD-2CB345C33714}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8DA5A66F-20AF-4A5C-AFAD-2CB345C33714}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CD7C4B08-20D2-487D-BEC8-BFCA6339FE74}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CD7C4B08-20D2-487D-BEC8-BFCA6339FE74}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CD7C4B08-20D2-487D-BEC8-BFCA6339FE74}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CD7C4B08-20D2-487D-BEC8-BFCA6339FE74}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2B17AD90-A138-4E32-AA56-60F35C80BDE5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2B17AD90-A138-4E32-AA56-60F35C80BDE5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2B17AD90-A138-4E32-AA56-60F35C80BDE5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2B17AD90-A138-4E32-AA56-60F35C80BDE5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -138,6 +152,9 @@ Global
 		{564624FD-F8CC-473A-B5B2-3972463EBC52} = {B3ED6BEF-8D70-4E95-A0CD-4658EA0B83B6}
 		{234A240C-50EA-4B2A-888F-501571428AEC} = {C247403F-5971-415A-ABD4-4F0B5F017160}
 		{8DA5A66F-20AF-4A5C-AFAD-2CB345C33714} = {234A240C-50EA-4B2A-888F-501571428AEC}
+		{5091E60B-C388-419A-ACF9-70B7C15F443F} = {8A27111F-4113-4C6D-B1B9-0D519CA6C435}
+		{CD7C4B08-20D2-487D-BEC8-BFCA6339FE74} = {5091E60B-C388-419A-ACF9-70B7C15F443F}
+		{2B17AD90-A138-4E32-AA56-60F35C80BDE5} = {5091E60B-C388-419A-ACF9-70B7C15F443F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {7002BA4D-6AD1-4D80-8549-94CE5A5272F2}
