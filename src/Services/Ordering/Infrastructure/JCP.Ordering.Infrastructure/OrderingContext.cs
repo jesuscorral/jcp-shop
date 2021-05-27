@@ -18,6 +18,5 @@ namespace JCP.Ordering.Infrastructure
         {
             modelBuilder.ApplyConfiguration(new OrderEntityTypeConfiguration());
         }
-
     }
 }

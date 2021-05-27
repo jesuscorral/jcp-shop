@@ -19,6 +19,5 @@ namespace JCP.Ordering.Infrastructure.Repositories
             await _orderingContext.Orders.AddAsync(order);
             return order.Id;
         }
-
     }
 }
