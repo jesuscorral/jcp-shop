@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace JCP.Ordering.Application.Features.Commands.Create
 {
-    public class CreateOrderCommandHandler: IRequestHandler<CreateOrderCommand, CreateOrderResponse>
+    public class CreateOrderCommandHandler : IRequestHandler<CreateOrderCommand, CreateOrderResponse>
     {
         private readonly IOrderRepository _orderRepository;
         private readonly IMapper _mapper;

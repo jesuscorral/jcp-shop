@@ -14,7 +14,7 @@ using Xunit;
 
 namespace JCP.Catalog.UnitTests.Presentation.Controllers
 {
-    public class CatalogControllerTests: IClassFixture<BaseFixture>
+    public class CatalogControllerTests : IClassFixture<BaseFixture>
     {
         private Mock<IMediator> _mediator;
         private Mock<ILogger<CatalogController>> _logger;
@@ -23,7 +23,7 @@ namespace JCP.Catalog.UnitTests.Presentation.Controllers
 
         public CatalogControllerTests(BaseFixture fixture)
         {
-            _fixture =  fixture ?? throw new ArgumentNullException(nameof(_fixture));
+            _fixture = fixture ?? throw new ArgumentNullException(nameof(_fixture));
         }
 
         [Fact]
@@ -33,7 +33,7 @@ namespace JCP.Catalog.UnitTests.Presentation.Controllers
             var sut = CreateSut();
             var mockRequest = new CreateCatalogItemCommand();
             _mediator.Setup(x => x.Send(It.IsAny<CreateCatalogItemCommand>(), new CancellationToken()))
-                .Returns(Task.FromResult(new CreateCatalogItemResponse { Success = true}));
+                .Returns(Task.FromResult(new CreateCatalogItemResponse { Success = true }));
 
             // Act
             var ret = await sut.AddCatalogItem(mockRequest);
@@ -48,7 +48,7 @@ namespace JCP.Catalog.UnitTests.Presentation.Controllers
             // Arrange 
             var sut = CreateSut();
             _mediator.Setup(x => x.Send(It.IsAny<GetAllCatalogItemsQuery>(), new CancellationToken()))
-                .Returns(Task.FromResult(new List<GetAllCatalogItemsResponse> { new GetAllCatalogItemsResponse()}));
+                .Returns(Task.FromResult(new List<GetAllCatalogItemsResponse> { new GetAllCatalogItemsResponse() }));
             // Act
             var ret = await sut.GetAll();
 

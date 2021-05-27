@@ -1,6 +1,6 @@
 ﻿namespace JCP.Catalog.Domain.CatalogItemAggregate
 {
-    public class CatalogItem: AuditableEntity
+    public class CatalogItem : AuditableEntity
     {
         public string Name { get; set; }
         public string Barcode { get; set; }

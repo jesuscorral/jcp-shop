@@ -14,13 +14,13 @@ namespace JCP.Logger
         {
             if (_instance == null)
             {
-            Log.Logger = new LoggerConfiguration()
-                                .MinimumLevel.Debug()
-                                .MinimumLevel.Override("Microsoft", LogEventLevel.Information)
-                                .Enrich.FromLogContext()
-                                .WriteTo.Console()
-                                //.WriteTo.Seq("http://localhost:5341")
-                                .CreateLogger();
+                Log.Logger = new LoggerConfiguration()
+                                    .MinimumLevel.Debug()
+                                    .MinimumLevel.Override("Microsoft", LogEventLevel.Information)
+                                    .Enrich.FromLogContext()
+                                    .WriteTo.Console()
+                                    //.WriteTo.Seq("http://localhost:5341")
+                                    .CreateLogger();
 
                 _instance = new Logger();
             }

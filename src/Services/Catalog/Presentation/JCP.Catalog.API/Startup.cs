@@ -6,7 +6,6 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Options;
 using System;
 
 namespace JCP.Catalog.API
@@ -22,7 +21,7 @@ namespace JCP.Catalog.API
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
-        { 
+        {
             var connectionString = BuildConnectionString();
 
             services.AddControllers()
@@ -72,7 +71,6 @@ namespace JCP.Catalog.API
             var sqlPassword = _configuration.GetValue<string>("CatalogDatabaseSettings:password");
 
             return $"Server={sqlHostName}, {sqlPort};Initial Catalog={dbName};User ID={sqlUser};Password={sqlPassword}";
-
         }
     }
 }

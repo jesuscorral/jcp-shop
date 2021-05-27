@@ -7,7 +7,6 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System;
-using System.Configuration;
 
 namespace JCP.Ordering.API
 {
@@ -70,7 +69,6 @@ namespace JCP.Ordering.API
             var sqlPassword = _configuration.GetValue<string>("OrderingDatabaseSettings:password");
 
             return $"Server={sqlHostName}, {sqlPort};Initial Catalog={sqlCatalog};User ID={sqlUser};Password={sqlPassword}";
-
         }
     }
 }

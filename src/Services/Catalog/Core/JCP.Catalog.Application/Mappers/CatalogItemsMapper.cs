@@ -5,7 +5,7 @@ using JCP.Catalog.Domain.CatalogItemAggregate;
 
 namespace JCP.Catalog.Application.Mappers
 {
-    public class CatalogItemsMapper: Profile
+    public class CatalogItemsMapper : Profile
     {
         public CatalogItemsMapper()
         {

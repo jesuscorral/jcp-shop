@@ -1,5 +1,4 @@
 ﻿using Autofac;
-using BuildingBlocks.EventBus;
 using BuildingBlocks.EventBus.Abstractions;
 using BuildingBlocks.EventBus.Events;
 using BuildingBlocks.EventBus.Extensions;
@@ -206,7 +205,7 @@ namespace BuildingBlocks.EventBus.EventBusRabbitMQ
                 }
             }
         }
-       
+
         private async Task ProcessEvent(string eventName, string message)
         {
             _logger.LogTrace("Processing RabbitMQ event: {EventName}", eventName);
@@ -246,7 +245,7 @@ namespace BuildingBlocks.EventBus.EventBusRabbitMQ
                 _logger.LogWarning("No subscription for RabbitMQ event: {EventName}", eventName);
             }
         }
-        
+
         private void DoInternalSubscription(string eventName)
         {
             var containsKey = _subsManager.HasSubscriptionsForEvent(eventName);

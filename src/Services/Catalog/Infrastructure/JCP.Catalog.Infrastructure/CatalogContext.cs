@@ -43,8 +43,8 @@ namespace JCP.Catalog.Infrastructure
                 }
             }
 
-           
-                return await base.SaveChangesAsync(cancellationToken);
+
+            return await base.SaveChangesAsync(cancellationToken);
         }
     }
 }

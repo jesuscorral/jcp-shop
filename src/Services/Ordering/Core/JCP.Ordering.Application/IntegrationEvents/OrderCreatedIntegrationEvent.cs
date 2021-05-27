@@ -5,7 +5,7 @@ namespace JCP.Ordering.Application.IntegrationEvents
 {
     public record OrderCreatedIntegrationEvent : IntegrationEvent
     {
-        public Guid OrderId { get;  }
+        public Guid OrderId { get; }
 
         public string Name { get; }
 

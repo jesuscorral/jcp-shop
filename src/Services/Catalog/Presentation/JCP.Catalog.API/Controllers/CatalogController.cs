@@ -18,7 +18,7 @@ namespace JCP.Catalog.API.Controllers
         public CatalogController(IMediator mediator, ILogger<CatalogController> logger)
         {
             _mediator = mediator ?? throw new ArgumentNullException(nameof(_mediator));
-            _logger =  logger ?? throw new ArgumentNullException(nameof(_logger)); 
+            _logger = logger ?? throw new ArgumentNullException(nameof(_logger));
         }
 
         [Route("catalog-item")]

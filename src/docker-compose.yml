@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   sql-server:
-    image: microsoft/mssql-server-linux:latest    
+    image: microsoft/mssql-server-linux:latest
     container_name: sqlServer
     environment:
       - SA_PASSWORD=Pass@word

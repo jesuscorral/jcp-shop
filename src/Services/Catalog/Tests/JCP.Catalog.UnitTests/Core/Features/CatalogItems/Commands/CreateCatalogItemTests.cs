@@ -10,7 +10,7 @@ using Xunit;
 
 namespace JCP.Catalog.UnitTests.Core.Features.CatalogItems.Commands
 {
-    public class CreateCatalogItemTests: BaseFixture
+    public class CreateCatalogItemTests : BaseFixture
     {
         private Mock<IMediator> _mediator;
         private Mock<ICatalogItemRepository> _catalogRepositoryMock;

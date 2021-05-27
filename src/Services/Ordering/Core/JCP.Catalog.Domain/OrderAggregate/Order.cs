@@ -3,7 +3,7 @@
 namespace JCP.Catalog.Domain.OrderAggregate
 {
     // TODO : Extend : AuditableEntity when AuditableEntity will be a accesible from crosscuting project
-    public class Order 
+    public class Order
     {
         public Guid Id { get; set; }
 

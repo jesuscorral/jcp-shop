@@ -11,9 +11,9 @@ namespace BuildingBlocks.EventBus
         bool IsEmpty { get; }
 
         event EventHandler<string> OnEventRemoved;
-        
+
         bool HasSubscriptionsForEvent(string eventName);
-        
+
         IEnumerable<SubscriptionInfo> GetHandlersForEvent(string eventName);
         void AddSubscription<T, TH>()
            where T : IntegrationEvent

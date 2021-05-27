@@ -47,14 +47,14 @@ namespace JCP.Catalog.API.Helperes
             services.AddSingleton<IEventBus, EventBusRabbitMQ>(sp =>
             {
                 var rabbitMqSettings = sp.GetRequiredService<IOptions<RabbitMqSettings>>().Value;
-                
+
                 var rabbitMQPersistentConnection = sp.GetRequiredService<IRabbitMQPersistentConnection>();
                 var iLifetimeScope = sp.GetRequiredService<ILifetimeScope>();
                 var logger = sp.GetRequiredService<ILogger<EventBusRabbitMQ>>();
                 var eventBusSubcriptionsManager = sp.GetRequiredService<IEventBusSubscriptionsManager>();
 
                 var retryCount = rabbitMqSettings.RetryCount != 0 ? rabbitMqSettings.RetryCount : DefaultRetryCount;
-                
+
                 return new EventBusRabbitMQ(rabbitMQPersistentConnection, logger, iLifetimeScope, eventBusSubcriptionsManager, subscriptionClientName, retryCount);
             });
 

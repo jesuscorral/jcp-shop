@@ -13,7 +13,7 @@ namespace JCP.Catalog.Infrastructure.Repositories
 
         public CatalogItemRepository(CatalogContext catalogContext)
         {
-            _catalogContext = catalogContext ?? throw new ArgumentNullException(nameof(catalogContext)); 
+            _catalogContext = catalogContext ?? throw new ArgumentNullException(nameof(catalogContext));
         }
 
         public async Task<int> InsertAsync(CatalogItem catalogItem)

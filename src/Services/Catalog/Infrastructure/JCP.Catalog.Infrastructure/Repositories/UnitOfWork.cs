@@ -34,7 +34,6 @@ namespace JCP.Catalog.Infrastructure.Repositories
             return ret;
         }
 
-     
         public void Dispose()
         {
             Dispose(true);

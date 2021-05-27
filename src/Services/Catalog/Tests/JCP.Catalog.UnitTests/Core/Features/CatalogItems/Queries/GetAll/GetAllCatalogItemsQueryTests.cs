@@ -1,23 +1,17 @@
-﻿using AutoMapper;
-using JCP.Catalog.Application.Features.CatalogItems.Queries.GetAll;
+﻿using JCP.Catalog.Application.Features.CatalogItems.Queries.GetAll;
 using JCP.Catalog.Application.Interfaces.Repositories;
-using JCP.Catalog.Application.Mappers;
 using JCP.Catalog.Domain.CatalogItemAggregate;
 using JCP.Catalog.UnitTests.Common;
 using MediatR;
 using Moq;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using Xunit;
 
 namespace JCP.Catalog.UnitTests.Core.Features.CatalogItems.Queries.GetAll
 {
-
-    public class GetAllCatalogItemsQueryTests: BaseFixture
+    public class GetAllCatalogItemsQueryTests : BaseFixture
     {
         private Mock<IMediator> _mediator;
         private Mock<ICatalogItemRepository> _catalogRepositoryMock;
@@ -32,14 +26,14 @@ namespace JCP.Catalog.UnitTests.Core.Features.CatalogItems.Queries.GetAll
         public async Task GetAllCatalogItems_ShouldReturnAllCatalogItems()
         {
             // Arrange
-           _mediator.Setup(x => x.Send (It.IsAny<GetAllCatalogItemsQuery>(), default(CancellationToken)))
-                .Returns(Task.FromResult(new List<GetAllCatalogItemsResponse>()));
+            _mediator.Setup(x => x.Send(It.IsAny<GetAllCatalogItemsQuery>(), default(CancellationToken)))
+                 .Returns(Task.FromResult(new List<GetAllCatalogItemsResponse>()));
 
             var fakeCatalogItems = new List<CatalogItem>()
             { new CatalogItem { BrandId = 1} };
 
-           _catalogRepositoryMock.Setup(x => x.GetListAsync())
-                .Returns(Task.FromResult(fakeCatalogItems));
+            _catalogRepositoryMock.Setup(x => x.GetListAsync())
+                 .Returns(Task.FromResult(fakeCatalogItems));
 
             var handler = CreateSut();
             var fakeRequest = new GetAllCatalogItemsQuery();

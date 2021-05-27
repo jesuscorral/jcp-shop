@@ -4,7 +4,7 @@ using JCP.Ordering.Application.Features.Commands.Create;
 
 namespace JCP.Ordering.Application.Mappers
 {
-    public class OrdersMapper: Profile
+    public class OrdersMapper : Profile
     {
         public OrdersMapper()
         {

@@ -20,8 +20,8 @@ namespace BuildingBlocks.EventBus.EventBusRabbitMQ
 
         object sync_root = new object();
 
-        public DefaultRabbitMQPersistentConnection(IConnectionFactory connectionFactory, 
-            ILogger<DefaultRabbitMQPersistentConnection> logger, 
+        public DefaultRabbitMQPersistentConnection(IConnectionFactory connectionFactory,
+            ILogger<DefaultRabbitMQPersistentConnection> logger,
             int retryCount = 5)
         {
             _connectionFactory = connectionFactory ?? throw new ArgumentNullException(nameof(connectionFactory));
