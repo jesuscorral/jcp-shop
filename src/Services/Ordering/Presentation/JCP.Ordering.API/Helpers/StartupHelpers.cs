@@ -54,7 +54,6 @@ namespace JCP.Ordering.API.Helpers
 
                 var retryCount = rabbitMqSettings.RetryCount != 0 ? rabbitMqSettings.RetryCount : DefaultRetryCount;
 
-
                 return new DefaultRabbitMQPersistentConnection(factory, logger, retryCount);
             });
 

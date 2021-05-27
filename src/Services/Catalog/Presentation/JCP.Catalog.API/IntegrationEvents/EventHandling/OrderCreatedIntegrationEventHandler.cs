@@ -9,7 +9,6 @@ namespace JCP.Catalog.API.IntegrationEvents.EventHandling
     {
         public OrderCreatedIntegrationEventHandler()
         {
-
         }
 
         public Task Handle(OrderCreatedIntegrationEvent @event)

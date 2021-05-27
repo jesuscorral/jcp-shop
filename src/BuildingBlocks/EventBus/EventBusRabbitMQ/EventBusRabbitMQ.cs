@@ -265,6 +265,5 @@ namespace BuildingBlocks.EventBus.EventBusRabbitMQ
                 }
             }
         }
-
     }
 }

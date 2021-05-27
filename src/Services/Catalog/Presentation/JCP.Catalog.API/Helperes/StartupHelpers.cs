@@ -65,7 +65,6 @@ namespace JCP.Catalog.API.Helperes
             return services;
         }
 
-
         public static IServiceCollection AddCustomIntegrations(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddSingleton<IRabbitMQPersistentConnection>(sp =>

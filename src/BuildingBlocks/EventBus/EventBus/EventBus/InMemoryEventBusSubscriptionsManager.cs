@@ -69,6 +69,5 @@ namespace BuildingBlocks.EventBus
                 _handlers[eventName].Add(SubscriptionInfo.Typed(handlerType));
             }
         }
-
     }
 }
