@@ -24,6 +24,7 @@ services:
 
   catalog-api:
     image: ${DOCKER_REGISTRY-}jcpcatalogapi
+    container_name: catalog-api
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_URLS=http://0.0.0.0:80
@@ -47,6 +48,7 @@ services:
 
   ordering-api:
     image: ${DOCKER_REGISTRY-}jcporderingapi
+    container_name: ordering-api
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_URLS=http://0.0.0.0:80
@@ -67,6 +69,21 @@ services:
     depends_on:
       - sql-server
       - rabbitmq
+
+  jcp-ordering-bff:
+    image: ${DOCKER_REGISTRY-}jcporderingbff
+    container_name: jcp-ordering-bff
+    build:
+        context: .
+        dockerfile: ApiGateways/JCP.Ordering.BFF/Dockerfile
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    depends_on:
+      - sql-server
+      - ordering-api
+      - catalog-api
+    ports:
+      - "5030:80"
 
 volumes:
   mssql-server-linux-data:
