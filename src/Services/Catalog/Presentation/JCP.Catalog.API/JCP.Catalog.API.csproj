@@ -2,13 +2,21 @@
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
-    <UserSecretsId>9e0f9ab5-0ed3-4dda-928a-82845304d54e</UserSecretsId>
+    <UserSecretsId>dad380b1-e312-4f1c-a822-b8f18e92453f</UserSecretsId>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
     <DockerfileContext>..\..\..</DockerfileContext>
     <DockerComposeProjectPath>..\..\..\docker-compose.dcproj</DockerComposeProjectPath>
   </PropertyGroup>
 
   <ItemGroup>
+    <Protobuf Include="Protos\catalog.proto" GrpcServices="Server" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Grpc.AspNetCore" Version="2.34.0" />
+    <PackageReference Include="Grpc.Tools" Version="2.37.0" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="5.0.2" />
+    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.10.13" />
     <PackageReference Include="Autofac.Extensions.DependencyInjection" Version="7.1.0" />
     <PackageReference Include="MediatR" Version="9.0.0" />
     <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="9.0.0" />
@@ -30,7 +38,6 @@
     <ProjectReference Include="..\..\..\..\BuildingBlocks\EventBus\EventBusRabbitMQ\EventBusRabbitMQ.csproj" />
     <ProjectReference Include="..\..\..\..\BuildingBlocks\EventBus\EventBus\EventBus\EventBus.csproj" />
     <ProjectReference Include="..\..\..\..\BuildingBlocks\Logger\JCP.Logger\JCP.Logger.csproj" />
-    <ProjectReference Include="..\..\..\Ordering\Core\JCP.Ordering.Application\JCP.Ordering.Application.csproj" />
     <ProjectReference Include="..\..\Core\JCP.Catalog.Application\JCP.Catalog.Application.csproj" />
     <ProjectReference Include="..\..\Infrastructure\JCP.Catalog.Infrastructure\JCP.Catalog.Infrastructure.csproj" />
   </ItemGroup>

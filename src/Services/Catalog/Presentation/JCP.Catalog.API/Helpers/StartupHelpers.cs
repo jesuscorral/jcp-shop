@@ -2,9 +2,9 @@
 using BuildingBlocks.EventBus;
 using BuildingBlocks.EventBus.Abstractions;
 using BuildingBlocks.EventBus.EventBusRabbitMQ;
-using JCP.Catalog.API.IntegrationEvents.EventHandling;
+using JCP.Catalog.API.IntegrationEvents.EventHandlers;
+using JCP.Catalog.API.IntegrationEvents.Events;
 using JCP.Catalog.Infrastructure;
-using JCP.Ordering.Application.IntegrationEvents;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -16,11 +16,29 @@ using RabbitMQ.Client;
 using System;
 using System.Reflection;
 
-namespace JCP.Catalog.API.Helperes
+namespace JCP.Catalog.API.Helpers
 {
     public static class StartupHelpers
     {
         private const int DefaultRetryCount = 5;
+
+        public static IServiceCollection AddCustomMvc(this IServiceCollection services)
+        {
+            // Add framework services.
+            services.AddControllers();
+
+            services.AddCors(options =>
+            {
+                options.AddPolicy("CorsPolicy",
+                    builder => builder
+                    .SetIsOriginAllowed((host) => true)
+                    .AllowAnyMethod()
+                    .AllowAnyHeader()
+                    .AllowCredentials());
+            });
+
+            return services;
+        }
 
         public static IServiceCollection AddCustomSwagger(this IServiceCollection services)
         {

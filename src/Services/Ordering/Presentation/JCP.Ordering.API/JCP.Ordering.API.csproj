@@ -32,4 +32,8 @@
     <ProjectReference Include="..\..\Infrastructure\JCP.Ordering.Infrastructure\JCP.Ordering.Infrastructure.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Grpc\OrderingService\" />
+  </ItemGroup>
+
 </Project>

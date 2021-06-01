@@ -1,0 +1,32 @@
+syntax = "proto3";
+
+
+package CatalogApi;
+
+// The response message containing the greetings.
+message GetAllCatalogItemsResponse1 {
+	repeated CatalogItemsResponse items = 1;
+}
+
+message CatalogItemsRequest {
+	string ids = 1;
+	int32 pageSize = 2;
+	int32 pageIndex = 3;
+}
+
+message CatalogItemsResponse {
+	string message = 1;
+	string name = 2;
+	string barcode = 3;
+	string description = 4;
+	float rate = 5;
+	int32 brandId = 6;
+}
+
+// The Catalog service definition.
+service Catalog {
+  // Get all catalog items
+  rpc GetCatalogItems (CatalogItemsRequest) returns (GetAllCatalogItemsResponse1){}
+}
+
+

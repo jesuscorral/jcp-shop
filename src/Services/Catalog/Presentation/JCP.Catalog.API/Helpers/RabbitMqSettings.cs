@@ -1,4 +1,4 @@
-﻿namespace JCP.Catalog.API.Helperes
+﻿namespace JCP.Catalog.API.Helpers
 {
     public class RabbitMqSettings
     {

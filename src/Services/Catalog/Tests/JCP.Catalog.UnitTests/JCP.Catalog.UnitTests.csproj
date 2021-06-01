@@ -35,7 +35,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Core\JCP.Catalog.Application\JCP.Catalog.Application.csproj" />
-    <ProjectReference Include="..\..\Presentation\JCP.Catalog.API\JCP.Catalog.API.csproj" />
   </ItemGroup>
 
 </Project>

@@ -1,9 +1,9 @@
 ﻿using BuildingBlocks.EventBus.Abstractions;
-using JCP.Ordering.Application.IntegrationEvents;
+using JCP.Catalog.API.IntegrationEvents.Events;
 using System;
 using System.Threading.Tasks;
 
-namespace JCP.Catalog.API.IntegrationEvents.EventHandling
+namespace JCP.Catalog.API.IntegrationEvents.EventHandlers
 {
     public class OrderCreatedIntegrationEventHandler : IIntegrationEventHandler<OrderCreatedIntegrationEvent>
     {
