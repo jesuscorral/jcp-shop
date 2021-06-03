@@ -4,7 +4,6 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.OpenApi.Models;
 
 namespace JCP.Ordering.BFF
 {
@@ -21,13 +20,10 @@ namespace JCP.Ordering.BFF
         public void ConfigureServices(IServiceCollection services)
         {
 
-            services.AddControllers();
-            services.AddSwaggerGen(c =>
-            {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "JCP.Ordering.BFF", Version = "v1" });
-            });
-
-            services.AddGrpcServices();
+            services.AddCustomMvc(Configuration)
+                    .AddCustomSwagger()
+                    .AddApplicationServices()
+                    .AddGrpcServices();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

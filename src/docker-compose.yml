@@ -79,6 +79,7 @@ services:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - urls__grpcCatalog=http://catalog-api:80
+      - urls__orders=http://ordering-api:80
     depends_on:
       - sql-server
       - ordering-api

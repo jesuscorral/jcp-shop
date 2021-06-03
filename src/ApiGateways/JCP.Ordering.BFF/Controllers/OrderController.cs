@@ -14,11 +14,15 @@ namespace JCP.Ordering.BFF.Controllers
     {
         private readonly ILogger<OrderController> _logger;
         private readonly ICatalogService _catalogService;
+        private readonly IOrderApiClient _orderApiClient;
 
-        public OrderController(ILogger<OrderController> logger, ICatalogService catalogService)
+        public OrderController(ILogger<OrderController> logger,
+            ICatalogService catalogService,
+            IOrderApiClient orderApiClient)
         {
             _logger = logger ?? throw new ArgumentNullException(nameof(logger));
             _catalogService = catalogService ?? throw new ArgumentNullException(nameof(catalogService));
+            _orderApiClient = orderApiClient ?? throw new ArgumentNullException(nameof(orderApiClient));
         }
 
         [Route("create")]
@@ -37,6 +41,7 @@ namespace JCP.Ordering.BFF.Controllers
             {
                 request.Status = OrderStatus.AwaitingStockValidation;
                 // TODO - Call to JCP.Order.API throw postAync without convert to grpc service
+                var response = _orderApiClient.CreateOrderAsync(request);
             }
             return Ok();
         }
