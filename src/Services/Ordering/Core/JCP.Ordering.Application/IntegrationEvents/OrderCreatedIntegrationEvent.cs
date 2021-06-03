@@ -1,4 +1,5 @@
 ﻿using BuildingBlocks.EventBus.Events;
+using JCP.Catalog.Domain.OrderAggregate;
 using System;
 
 namespace JCP.Ordering.Application.IntegrationEvents
@@ -13,15 +14,17 @@ namespace JCP.Ordering.Application.IntegrationEvents
         public string Username { get; init; }
         public int CardTypeId { get; init; }
         public string CardNumber { get; init; }
+        public OrderStatus Status { get; init; }
 
-        public OrderCreatedIntegrationEvent(Guid orderId, string name, string userId, string username, int cardTypeId, string cardNumber)
+        public OrderCreatedIntegrationEvent(Guid orderId, string name, string userId, string username, int cardTypeId, string cardNumber, OrderStatus status)
         {
             OrderId = orderId;
             Name = name;
             UserId = userId;
             Username = username;
             CardTypeId = cardTypeId;
-            CardNumber = CardNumber;
+            CardNumber = cardNumber;
+            Status = status;
         }
     }
 }

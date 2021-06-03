@@ -14,5 +14,7 @@ namespace JCP.Catalog.Domain.OrderAggregate
         //public Address address { get; set; }
         public int CardTypeId { get; set; }
         public string CardNumber { get; set; }
+
+        public OrderStatus Status { get; set; }
     }
 }

@@ -33,7 +33,7 @@ namespace JCP.Ordering.Application.Features.Commands.Create
             await _orderRepository.InsertAsync(order);
 
             // TODO: To improve
-            var eventMessage = new OrderCreatedIntegrationEvent(order.Id, order.Name, order.UserId, order.UserName, order.CardTypeId, order.CardNumber);
+            var eventMessage = new OrderCreatedIntegrationEvent(order.Id, order.Name, order.UserId, order.UserName, order.CardTypeId, order.CardNumber, order.Status);
             _eventBus.Publish(eventMessage);
 
             return new CreateOrderResponse

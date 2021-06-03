@@ -1,4 +1,5 @@
-﻿using MediatR;
+﻿using JCP.Catalog.Domain.OrderAggregate;
+using MediatR;
 using System;
 
 namespace JCP.Ordering.Application.Features.Commands.Create
@@ -14,5 +15,6 @@ namespace JCP.Ordering.Application.Features.Commands.Create
         //public Address address { get; set; }
         public int CardTypeId { get; set; }
         public string CardNumber { get; set; }
+        public OrderStatus Status { get; set; }
     }
 }
