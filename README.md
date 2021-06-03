@@ -11,6 +11,6 @@ Microservices
 MediatR
 Docker compose
 Xunit - Unit tests
-Options pattern (to get RabbiMQ settings from AppSettings)
+Options pattern (to get RabbiMQ settings from AppSettings, UrlsConfig)
 RabbitMq
 Grpc
