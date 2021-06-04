@@ -1,9 +1,10 @@
 ﻿using BuildingBlocks.EventBus.Events;
+using System;
 
-namespace JCP.Ordering.API.IntegrationEvents.Events
+namespace JCP.Ordering.Application.IntegrationEvents.Events
 {
     public record OrderStockConfirmedIntegrationEvent : IntegrationEvent
     {
-
+        public Guid OrderId { get; set; }
     }
 }

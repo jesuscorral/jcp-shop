@@ -2,8 +2,8 @@
 using BuildingBlocks.EventBus;
 using BuildingBlocks.EventBus.Abstractions;
 using BuildingBlocks.EventBus.EventBusRabbitMQ;
-using JCP.Ordering.API.IntegrationEvents.EventHandlers;
-using JCP.Ordering.API.IntegrationEvents.Events;
+using JCP.Ordering.Application.IntegrationEvents.EventHandlers;
+using JCP.Ordering.Application.IntegrationEvents.Events;
 using JCP.Ordering.Infrastructure;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
@@ -81,6 +81,8 @@ namespace JCP.Ordering.API.Helpers
             });
 
             services.AddSingleton<IEventBusSubscriptionsManager, InMemoryEventBusSubscriptionsManager>();
+            services.AddTransient<OrderStockConfirmedIntegrationEventHandler>();
+            services.AddTransient<OrderStockRejectedIntegrationEventHandler>();
 
             return services;
         }
@@ -88,7 +90,6 @@ namespace JCP.Ordering.API.Helpers
         public static void ConfigureEventBus(this IApplicationBuilder app)
         {
             var eventBus = app.ApplicationServices.GetRequiredService<IEventBus>();
-            //eventBus.Subscribe<OrderCreatedIntegrationEvent, IIntegrationEventHandler<OrderCreatedIntegrationEvent>>();
 
             eventBus.Subscribe<OrderStockConfirmedIntegrationEvent, OrderStockConfirmedIntegrationEventHandler>();
             eventBus.Subscribe<OrderStockRejectedIntegrationEvent, OrderStockRejectedIntegrationEventHandler>();

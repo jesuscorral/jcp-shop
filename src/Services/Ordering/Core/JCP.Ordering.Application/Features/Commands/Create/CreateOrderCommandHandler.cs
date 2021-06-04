@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using BuildingBlocks.EventBus.Abstractions;
 using JCP.Catalog.Domain.OrderAggregate;
-using JCP.Ordering.Application.IntegrationEvents;
+using JCP.Ordering.Application.IntegrationEvents.Events;
 using JCP.Ordering.Application.Interface.Repositories;
 using MediatR;
 using System;

@@ -27,13 +27,13 @@ namespace JCP.Catalog.API.IntegrationEvents.EventHandlers
             var result = _mediator.Send(request);
             if (result.Result == null || result.Result.AvailableStock < 0)
             {
-                var eventMessage = new OrderStockRejectedIntegrationEvent();
+                var eventMessage = new OrderStockRejectedIntegrationEvent(Guid.NewGuid());
                 _eventBus.Publish(eventMessage);
             }
             else
             {
 
-                var eventMessage = new OrderStockConfirmedIntegrationEvent();
+                var eventMessage = new OrderStockConfirmedIntegrationEvent(Guid.NewGuid());
                 _eventBus.Publish(eventMessage);
             }
         }

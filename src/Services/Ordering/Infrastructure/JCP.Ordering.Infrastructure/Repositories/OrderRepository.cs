@@ -1,6 +1,7 @@
 ﻿using JCP.Catalog.Domain.OrderAggregate;
 using JCP.Ordering.Application.Interface.Repositories;
 using System;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace JCP.Ordering.Infrastructure.Repositories
@@ -18,6 +19,11 @@ namespace JCP.Ordering.Infrastructure.Repositories
         {
             await _orderingContext.Orders.AddAsync(order);
             return order.Id;
+        }
+
+        public async Task<Order> GetById(Guid orderId)
+        {
+            return _orderingContext.Orders.FirstOrDefault(x => x.Id == orderId);
         }
     }
 }

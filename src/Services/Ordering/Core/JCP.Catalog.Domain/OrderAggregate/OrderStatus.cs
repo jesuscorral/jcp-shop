@@ -2,6 +2,8 @@
 {
     public enum OrderStatus
     {
-        AwaitingStockValidation = 1
+        AwaitingStockValidation = 1,
+        ConfirmedStockValidation = 2,
+        RejectedStockValidation = 3
     }
 }

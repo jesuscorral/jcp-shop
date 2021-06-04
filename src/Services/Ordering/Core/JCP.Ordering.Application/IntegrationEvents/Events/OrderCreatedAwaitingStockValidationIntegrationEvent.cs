@@ -2,7 +2,7 @@
 using JCP.Catalog.Domain.OrderAggregate;
 using System;
 
-namespace JCP.Ordering.Application.IntegrationEvents
+namespace JCP.Ordering.Application.IntegrationEvents.Events
 {
     public record OrderCreatedAwaitingStockValidationIntegrationEvent : IntegrationEvent
     {
