@@ -7,7 +7,6 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Moq;
 using System;
-using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using Xunit;
@@ -48,7 +47,7 @@ namespace JCP.Catalog.UnitTests.Presentation.Controllers
             // Arrange 
             var sut = CreateSut();
             _mediator.Setup(x => x.Send(It.IsAny<GetAllCatalogItemsQuery>(), new CancellationToken()))
-                .Returns(Task.FromResult(new List<GetAllCatalogItemsResponse> { new GetAllCatalogItemsResponse() }));
+                .Returns(Task.FromResult(new GetAllCatalogItemsResponse()));
             // Act
             var ret = await sut.GetAll();
 

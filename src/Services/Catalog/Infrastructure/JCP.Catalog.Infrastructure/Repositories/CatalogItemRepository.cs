@@ -26,5 +26,10 @@ namespace JCP.Catalog.Infrastructure.Repositories
         {
             return await _catalogContext.CatalogItems.ToListAsync();
         }
+
+        public async Task<CatalogItem> GetByIdAsync(int id)
+        {
+            return await _catalogContext.CatalogItems.FirstOrDefaultAsync(x => x.Id == id);
+        }
     }
 }

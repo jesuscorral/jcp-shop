@@ -2,7 +2,10 @@
 using BuildingBlocks.EventBus;
 using BuildingBlocks.EventBus.Abstractions;
 using BuildingBlocks.EventBus.EventBusRabbitMQ;
+using JCP.Ordering.API.IntegrationEvents.EventHandlers;
+using JCP.Ordering.API.IntegrationEvents.Events;
 using JCP.Ordering.Infrastructure;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -81,5 +84,15 @@ namespace JCP.Ordering.API.Helpers
 
             return services;
         }
+
+        public static void ConfigureEventBus(this IApplicationBuilder app)
+        {
+            var eventBus = app.ApplicationServices.GetRequiredService<IEventBus>();
+            //eventBus.Subscribe<OrderCreatedIntegrationEvent, IIntegrationEventHandler<OrderCreatedIntegrationEvent>>();
+
+            eventBus.Subscribe<OrderStockConfirmedIntegrationEvent, OrderStockConfirmedIntegrationEventHandler>();
+            eventBus.Subscribe<OrderStockRejectedIntegrationEvent, OrderStockRejectedIntegrationEventHandler>();
+        }
+
     }
 }

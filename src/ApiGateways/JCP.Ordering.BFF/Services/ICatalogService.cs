@@ -1,10 +1,10 @@
-﻿using JCP.Ordering.BFF.Models;
+﻿using CatalogApi;
 using System.Threading.Tasks;
 
 namespace JCP.Ordering.BFF.Services
 {
     public interface ICatalogService
     {
-        Task<CatalogItem> GetCatalogItemAsync();
+        Task<GetAllCatalogItemsResponse1> GetCatalogItemAsync(CatalogItemsRequest request);
     }
 }

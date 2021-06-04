@@ -58,6 +58,8 @@ namespace JCP.Ordering.API
             {
                 endpoints.MapControllers();
             });
+
+            app.ConfigureEventBus();
         }
 
         private string BuildConnectionString()

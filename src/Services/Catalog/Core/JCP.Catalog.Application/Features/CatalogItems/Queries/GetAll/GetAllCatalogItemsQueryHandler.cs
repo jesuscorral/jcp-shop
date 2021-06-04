@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using JCP.Catalog.Application.Features.CatalogItems.Queries.Dtos;
 using JCP.Catalog.Application.Interfaces.Repositories;
 using MediatR;
 using System;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace JCP.Catalog.Application.Features.CatalogItems.Queries.GetAll
 {
-    public class GetAllCatalogItemsQueryHandler : IRequestHandler<GetAllCatalogItemsQuery, List<GetAllCatalogItemsResponse>>
+    public class GetAllCatalogItemsQueryHandler : IRequestHandler<GetAllCatalogItemsQuery, GetAllCatalogItemsResponse>
     {
         private readonly ICatalogItemRepository _catalogItemRepository;
         private readonly IMapper _mapper;
@@ -20,10 +21,13 @@ namespace JCP.Catalog.Application.Features.CatalogItems.Queries.GetAll
             _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
         }
 
-        public async Task<List<GetAllCatalogItemsResponse>> Handle(GetAllCatalogItemsQuery request, CancellationToken cancellationToken)
+        public async Task<GetAllCatalogItemsResponse> Handle(GetAllCatalogItemsQuery request, CancellationToken cancellationToken)
         {
+            // TODO - Improve automapper
             var catalogItems = await _catalogItemRepository.GetListAsync();
-            return _mapper.Map<List<GetAllCatalogItemsResponse>>(catalogItems);
+            var t = _mapper.Map<List<CatalogItemDto>>(catalogItems);
+
+            return new GetAllCatalogItemsResponse { Items = t };
         }
     }
 }

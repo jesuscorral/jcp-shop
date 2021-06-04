@@ -1,4 +1,5 @@
-﻿using JCP.Ordering.BFF.Models;
+﻿using CatalogApi;
+using JCP.Ordering.BFF.Models;
 using JCP.Ordering.BFF.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -36,11 +37,11 @@ namespace JCP.Ordering.BFF.Controllers
                 return BadRequest("Error");
             }
 
-            var catalogItems = await _catalogService.GetCatalogItemAsync();
+            var req = new CatalogItemsRequest();
+            var catalogItems = await _catalogService.GetCatalogItemAsync(req);
             if (catalogItems != null)
             {
                 request.Status = OrderStatus.AwaitingStockValidation;
-                // TODO - Call to JCP.Order.API throw postAync without convert to grpc service
                 var response = _orderApiClient.CreateOrderAsync(request);
             }
             return Ok();

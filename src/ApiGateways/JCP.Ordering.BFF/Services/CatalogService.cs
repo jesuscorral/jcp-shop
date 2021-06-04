@@ -1,5 +1,4 @@
 ﻿using CatalogApi;
-using JCP.Ordering.BFF.Models;
 using Microsoft.Extensions.Logging;
 using System.Threading.Tasks;
 
@@ -17,12 +16,9 @@ namespace JCP.Ordering.BFF.Services
             _logger = logger;
         }
 
-        public async Task<CatalogItem> GetCatalogItemAsync()
+        public async Task<GetAllCatalogItemsResponse1> GetCatalogItemAsync(CatalogItemsRequest request)
         {
-            var request = new CatalogItemsRequest();
-            var response = await _client.GetCatalogItemsAsync(request);
-
-            return new CatalogItem();
+            return await _client.GetCatalogItemsAsync(request);
         }
     }
 }

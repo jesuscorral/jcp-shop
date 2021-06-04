@@ -1,6 +1,6 @@
-﻿namespace JCP.Catalog.Domain.CatalogItemAggregate
+﻿namespace JCP.Catalog.Application.Features.CatalogItems.Queries.Dtos
 {
-    public class CatalogItem : AuditableEntity
+    public class CatalogItemDto
     {
         public string Name { get; set; }
         public string Barcode { get; set; }

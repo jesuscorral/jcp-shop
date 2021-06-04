@@ -9,5 +9,7 @@ namespace JCP.Catalog.Application.Interfaces.Repositories
         Task<int> InsertAsync(CatalogItem buyer);
 
         Task<List<CatalogItem>> GetListAsync();
+
+        Task<CatalogItem> GetByIdAsync(int id);
     }
 }

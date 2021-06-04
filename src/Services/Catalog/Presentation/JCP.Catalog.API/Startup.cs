@@ -78,11 +78,11 @@ namespace JCP.Catalog.API
         {
             var sqlHostName = Environment.GetEnvironmentVariable("SQL_HOSTNAME") ?? _configuration.GetValue<string>("CatalogDatabaseSettings:hostName");
             var sqlPort = Environment.GetEnvironmentVariable("SQL_PORT") ?? _configuration.GetValue<string>("CatalogDatabaseSettings:port");
-            var dbName = _configuration.GetValue<string>("CatalogDatabaseSettings:dbName");
+            var sqlCatalog = _configuration.GetValue<string>("CatalogDatabaseSettings:dbName");
             var sqlUser = _configuration.GetValue<string>("CatalogDatabaseSettings:user");
             var sqlPassword = _configuration.GetValue<string>("CatalogDatabaseSettings:password");
 
-            return $"Server={sqlHostName}, {sqlPort};Initial Catalog={dbName};User ID={sqlUser};Password={sqlPassword}";
+            return $"Server={sqlHostName}, {sqlPort};Initial Catalog={sqlCatalog};User ID={sqlUser};Password={sqlPassword}";
         }
     }
 }

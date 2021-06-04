@@ -1,11 +1,10 @@
-﻿namespace JCP.Catalog.Application.Features.CatalogItems.Queries.GetAll
+﻿using JCP.Catalog.Application.Features.CatalogItems.Queries.Dtos;
+using System.Collections.Generic;
+
+namespace JCP.Catalog.Application.Features.CatalogItems.Queries.GetAll
 {
     public class GetAllCatalogItemsResponse
     {
-        public string Name { get; set; }
-        public string Barcode { get; set; }
-        public string Description { get; set; }
-        public decimal Rate { get; set; }
-        public int BrandId { get; set; }
+        public List<CatalogItemDto> Items { get; set; }
     }
 }

@@ -27,7 +27,7 @@ namespace JCP.Catalog.UnitTests.Core.Features.CatalogItems.Queries.GetAll
         {
             // Arrange
             _mediator.Setup(x => x.Send(It.IsAny<GetAllCatalogItemsQuery>(), default(CancellationToken)))
-                 .Returns(Task.FromResult(new List<GetAllCatalogItemsResponse>()));
+                 .Returns(Task.FromResult(new GetAllCatalogItemsResponse()));
 
             var fakeCatalogItems = new List<CatalogItem>()
             { new CatalogItem { BrandId = 1} };

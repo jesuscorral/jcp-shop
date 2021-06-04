@@ -78,7 +78,7 @@ namespace JCP.Catalog.API.Helpers
 
             services.AddSingleton<IEventBusSubscriptionsManager, InMemoryEventBusSubscriptionsManager>();
 
-            services.AddTransient<OrderCreatedIntegrationEventHandler>();
+            services.AddTransient<OrderCreatedAwaitingStockValidationIntegrationEventHandler>();
 
             return services;
         }
@@ -111,7 +111,7 @@ namespace JCP.Catalog.API.Helpers
             var eventBus = app.ApplicationServices.GetRequiredService<IEventBus>();
             //eventBus.Subscribe<OrderCreatedIntegrationEvent, IIntegrationEventHandler<OrderCreatedIntegrationEvent>>();
 
-            eventBus.Subscribe<OrderCreatedIntegrationEvent, OrderCreatedIntegrationEventHandler>();
+            eventBus.Subscribe<OrderCreatedAwaitingStockValidationIntegrationEvent, OrderCreatedAwaitingStockValidationIntegrationEventHandler>();
         }
     }
 }
